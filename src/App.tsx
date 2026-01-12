@@ -1,4 +1,5 @@
 import HomePage from './features/home/pages/HomePage';
+import ThemeToggle from './ThemeToggle';
 
 function App() {
 
@@ -6,6 +7,7 @@ function App() {
   return (
     <>
       <HomePage />
+      <ThemeToggle />
     </>
   )
 }
