@@ -1,7 +1,7 @@
-import defaultVideo from "../assets/videos/destinations-hero.mp4";
-import heroVideo1 from "../assets/videos/video1.webm";
-import heroVideo2 from "../assets/videos/video2.webm";
-import heroVideo3 from "../assets/videos/video3.webm";
+import heroVideo1 from "../assets/videos/hero-video1.mp4";
+import heroVideo2 from "../assets/videos/hero-video2.webm";
+import heroVideo3 from "../assets/videos/hero-video3.webm";
+import heroVideo4 from "../assets/videos/hero-video4.webm";
 
 export interface HeroContentItem {
   label: string;
@@ -22,8 +22,8 @@ export const HERO_CONTENT: Record<string, HeroContentItem> = {
       "Traslados y seguros opcionales",
       "Pagos en meses con costo financiero",
     ],
-    videoMp4: defaultVideo,
-    videoWebm: heroVideo1,
+    videoMp4: heroVideo1,
+    videoWebm: heroVideo2,
   },
   internacionales: {
     label: "Internacionales",
@@ -34,8 +34,8 @@ export const HERO_CONTENT: Record<string, HeroContentItem> = {
       "Reprogramaciones con el equipo Viadca",
       "Contacto 24/7",
     ],
-    videoMp4: defaultVideo,
-    videoWebm: heroVideo2,
+    videoMp4: heroVideo1,
+    videoWebm: heroVideo3,
   },
   destacados: {
     label: "Destacados",
@@ -46,8 +46,8 @@ export const HERO_CONTENT: Record<string, HeroContentItem> = {
       "Bloqueos anticipados",
       "Bonos y upgrades sujetos a disponibilidad",
     ],
-    videoMp4: defaultVideo,
-    videoWebm: heroVideo3,
+    videoMp4: heroVideo1,
+    videoWebm: heroVideo4,
   },
   todos: {
     label: "Todos",
@@ -58,7 +58,7 @@ export const HERO_CONTENT: Record<string, HeroContentItem> = {
       "Opciones familiares y corporativas",
       "Asesoría de nuestro equipo",
     ],
-    videoMp4: defaultVideo,
+    videoMp4: heroVideo1,
     videoWebm: null,
   },
 };
