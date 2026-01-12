@@ -1,0 +1,21 @@
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+  display: block;
+}
+
+::view-transition-new(root) {
+  z-index: 9999;
+  animation: reveal-theme 0.6s cubic-bezier(0.64, 0, 0.78, 0) forwards;
+  pointer-events: none;
+}
+
+@keyframes reveal-theme {
+  from {
+    clip-path: circle(0% at var(--transition-x, 50%) var(--transition-y, 50%));
+  }
+  to {
+    clip-path: circle(150vmax at var(--transition-x, 50%) var(--transition-y, 50%));
+  }
+}
