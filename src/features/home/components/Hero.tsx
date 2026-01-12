@@ -94,7 +94,7 @@ const Hero = () => {
                 <button
                   key={key}
                   onClick={() => handleTabChange(key)}
-                  className={`inline-flex items-center justify-center h-10 px-4 rounded-full border text-xs sm:text-sm font-semibold leading-none transition-all duration-200 cursor-pointer hover:shadow-sm whitespace-nowrap shrink-0
+                  className={`inline-flex items-center justify-center h-10 sm:px-2 lg:px-4 rounded-full border text-xs sm:text-sm font-semibold leading-none transition-all duration-200 cursor-pointer hover:shadow-sm whitespace-nowrap shrink-0
                     ${
                       activeTab === key
                         ? "bg-foreground text-background border-foreground"
