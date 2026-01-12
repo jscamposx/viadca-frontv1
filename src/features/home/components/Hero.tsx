@@ -34,18 +34,15 @@ const Hero = () => {
   }, [activeTab]);
 
   return (
-
     <div className="bg-background w-full overflow-x-hidden pt-24 md:pt-32 transition-colors duration-300">
       <section className="flex flex-col items-center justify-center w-full max-w-7xl mx-auto px-6 relative pb-12 md:pb-20">
         <div className="w-full flex justify-center mb-4 md:mb-6">
-      
           <span className="text-sm md:text-2xl font-bold uppercase text-brand tracking-wider text-center block">
             Agencia de viajes
           </span>
         </div>
 
         <div className="w-full max-w-6xl mb-8 md:mb-12">
-    
           <h1
             className={`text-4xl sm:text-6xl md:text-[90px] leading-[1.1] md:leading-none font-serif text-center text-foreground font-medium tracking-tight transition-opacity duration-300 ${
               isTransitioning ? "opacity-0" : "opacity-100"
@@ -56,14 +53,14 @@ const Hero = () => {
           </h1>
         </div>
 
-        <div className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto px-4 sm:px-0">
-        
+        <div className="flex flex-row items-center gap-3 w-full sm:w-auto px-4 sm:px-0">
           <button
             type="button"
             className="group w-full sm:w-auto inline-flex items-center justify-center h-12 md:h-14 px-8 rounded-full border-2 border-brand bg-transparent text-brand font-bold text-sm md:text-base cursor-pointer transition-all duration-200 hover:bg-brand/10"
           >
             <span className="block transition-transform duration-300 group-hover:scale-95">
-              Consultar en WhatsApp
+              <span className="md:hidden">WhatsApp</span>
+              <span className="hidden md:inline">Consultar en WhatsApp</span>
             </span>
           </button>
 
@@ -72,7 +69,8 @@ const Hero = () => {
             className="group w-full sm:w-auto inline-flex items-center justify-center h-12 md:h-14 px-8 rounded-full border-2 border-brand bg-brand text-brand-foreground font-bold text-sm md:text-base cursor-pointer transition-all duration-200 hover:brightness-110 shadow-[0_0_20px_rgba(5,169,236,0.3)]"
           >
             <span className="block transition-transform duration-300 group-hover:scale-95">
-              Llamar ahora
+              <span className="md:hidden">Llamar</span>
+              <span className="hidden md:inline">Llamar ahora</span>
             </span>
           </button>
         </div>
@@ -91,7 +89,6 @@ const Hero = () => {
             ref={leftContentInner}
             className="w-full max-w-xl mx-auto px-6 lg:px-12 flex flex-col justify-start lg:justify-center py-6 pb-24 lg:py-0 lg:pb-0 lg:h-auto"
           >
-            {/* TABS */}
             <div className="flex overflow-x-auto pb-2 lg:pb-0 gap-2 mb-6 lg:mb-8 mask-gradient -mx-6 px-6 lg:mx-0 lg:px-0 lg:flex-wrap items-center min-h-14 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
               {Object.keys(HERO_CONTENT).map((key) => (
                 <button
@@ -100,7 +97,7 @@ const Hero = () => {
                   className={`inline-flex items-center justify-center h-10 px-4 rounded-full border text-xs sm:text-sm font-semibold leading-none transition-all duration-200 cursor-pointer hover:shadow-sm whitespace-nowrap shrink-0
                     ${
                       activeTab === key
-                        ? "bg-foreground text-background border-foreground" // Activo: Invierte colores (Negro fondo/blanco texto en light)
+                        ? "bg-foreground text-background border-foreground"
                         : "bg-transparent text-muted border-surface hover:border-brand hover:text-brand"
                     }`}
                 >
@@ -155,13 +152,13 @@ const Hero = () => {
           </div>
         </div>
 
-       <div
+        <div
           ref={rightSideWrapper}
           className="grow h-full flex items-center justify-center relative z-20 order-1 lg:order-2 p-4 lg:p-0"
         >
           <div
             ref={videoInner}
-           className="relative overflow-hidden shadow-2xl bg-surface w-full h-full lg:w-[85%] lg:h-[80vh] rounded-2xl lg:rounded-3xl border border-surface/10"
+            className="relative overflow-hidden shadow-2xl bg-surface w-full h-full lg:w-[85%] lg:h-[80vh] rounded-2xl lg:rounded-3xl border border-surface/10"
           >
             <video
               ref={videoRef}
