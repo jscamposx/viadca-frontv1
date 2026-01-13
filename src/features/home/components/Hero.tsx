@@ -34,15 +34,15 @@ const Hero = () => {
   }, [activeTab]);
 
   return (
-    <div className="bg-background w-full overflow-x-hidden pt-24 md:pt-32 transition-colors duration-300">
-      <section className="flex flex-col items-center justify-center w-full max-w-7xl mx-auto px-6 relative pb-12 md:pb-20">
+    <div className="bg-background w-full overflow-hidden pt-24 md:pt-32 transition-colors duration-300">
+      <section className="flex flex-col items-center justify-center w-full max-w-7xl mx-auto px-6 relative pb-4 md:pb-20">
         <div className="w-full flex justify-center mb-4 md:mb-6">
           <span className="text-sm md:text-2xl font-bold uppercase text-brand tracking-wider text-center block">
             Agencia de viajes
           </span>
         </div>
 
-        <div className="w-full max-w-6xl mb-8 md:mb-12">
+        <div className="w-full max-w-6xl mb-6 md:mb-12">
           <h1
             className={`text-4xl sm:text-6xl md:text-[90px] leading-[1.1] md:leading-none font-serif text-center text-foreground font-medium tracking-tight transition-opacity duration-300 ${
               isTransitioning ? "opacity-0" : "opacity-100"
@@ -53,7 +53,7 @@ const Hero = () => {
           </h1>
         </div>
 
-        <div className="flex flex-row items-center gap-3 w-full sm:w-auto px-4 sm:px-0">
+        <div className="flex flex-row items-center gap-3 w-full sm:w-auto px-4 sm:px-0 justify-center">
           <button
             type="button"
             className="group w-full sm:w-auto inline-flex items-center justify-center h-12 md:h-14 px-8 rounded-full border-2 border-brand bg-transparent text-brand font-bold text-sm md:text-base cursor-pointer transition-all duration-200 hover:bg-brand/10"
@@ -76,62 +76,73 @@ const Hero = () => {
         </div>
       </section>
 
+      {/* Contenedor Principal Bloqueado al alto de pantalla */}
       <div
         ref={container}
         className="w-full h-dvh flex flex-col lg:flex-row items-stretch overflow-hidden relative bg-background"
       >
+        {/* Lado Izquierdo (Texto y Tabs) - Orden 2 en móvil (abajo) */}
         <div
           ref={leftContent}
-          className="bg-background z-30 flex flex-col justify-start lg:justify-center relative border-r border-surface/50 order-2 lg:order-1 
-          overflow-y-auto lg:overflow-visible [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+          // Lógica: justify-start en móvil/tablet para pegar contenido arriba. Center en Desktop.
+          className="bg-background z-30 flex flex-col justify-start lg:justify-center relative border-r border-surface/50 order-2 lg:order-1 h-[55%] lg:h-full overflow-hidden"
         >
           <div
             ref={leftContentInner}
-            className="w-full max-w-xl mx-auto px-6 lg:px-12 flex flex-col justify-start lg:justify-center py-6 pb-24 lg:py-0 lg:pb-0 lg:h-auto"
+            // CAMBIO CLAVE AQUÍ:
+            // max-w-xl (móvil) -> md:max-w-3xl (tablet: más ancho) -> lg:max-w-xl (desktop: vuelve a angosto porque la pantalla se divide)
+            // paddings ajustados progresivamente: px-6 -> md:px-10 -> lg:px-12
+            className="w-full max-w-xl md:max-w-3xl lg:max-w-xl mx-auto px-6 md:px-10 lg:px-12 flex flex-col justify-start lg:justify-center h-full pt-6 lg:pt-0 lg:py-0"
           >
-            <div className="flex overflow-x-auto pb-2 lg:pb-0 gap-2 mb-6 lg:mb-8 mask-gradient -mx-6 px-6 lg:mx-0 lg:px-0 lg:flex-wrap items-center min-h-14 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+            <div className="flex flex-nowrap justify-start gap-2 mb-4 lg:mb-8 w-full">
               {Object.keys(HERO_CONTENT).map((key) => (
                 <button
                   key={key}
                   onClick={() => handleTabChange(key)}
-                  className={`inline-flex items-center justify-center h-10 sm:px-2 lg:px-4 rounded-full border text-xs sm:text-sm font-semibold leading-none transition-all duration-200 cursor-pointer hover:shadow-sm whitespace-nowrap shrink-0
+                  className={`items-center justify-center h-8 lg:h-10 px-3 lg:px-4 rounded-full border text-xs sm:text-sm font-semibold leading-none transition-all duration-200 cursor-pointer hover:shadow-sm whitespace-nowrap shrink-0
                     ${
                       activeTab === key
                         ? "bg-foreground text-background border-foreground"
                         : "bg-transparent text-muted border-surface hover:border-brand hover:text-brand"
-                    }`}
+                    }
+                    ${
+                      key === "internacionales"
+                        ? "hidden sm:inline-flex"
+                        : "inline-flex"
+                    }
+                  `}
                 >
                   {HERO_CONTENT[key].label}
                 </button>
               ))}
             </div>
 
-            <div className="w-full h-px bg-surface mb-6 lg:mb-8 hidden lg:block"></div>
+            <div className="w-full h-px bg-surface mb-4 lg:mb-8 hidden lg:block"></div>
 
             <div
-              className={`space-y-4 lg:space-y-6 transition-opacity duration-300 ${
+              className={`space-y-3 lg:space-y-6 transition-opacity duration-300 flex flex-col items-start ${
                 isTransitioning ? "opacity-50" : "opacity-100"
               }`}
             >
-              <h2 className="text-2xl sm:text-3xl lg:text-5xl font-bold text-foreground font-serif leading-tight">
+              <h2 className="text-2xl sm:text-3xl lg:text-5xl font-bold text-foreground font-serif leading-tight text-left">
                 {currentContent.title}
               </h2>
-              <p className="text-sm sm:text-base lg:text-lg text-muted leading-relaxed max-w-md lg:max-w-none">
+              <p className="text-sm sm:text-base lg:text-lg text-muted leading-relaxed max-w-md lg:max-w-none text-left">
                 {currentContent.desc}
               </p>
 
-              <div>
-                <p className="text-xs sm:text-sm font-bold text-foreground uppercase tracking-wide mb-3">
+              <div className="w-full">
+                <p className="text-[10px] sm:text-sm font-bold text-foreground uppercase tracking-wide mb-2 lg:mb-3 text-left">
                   Te ayudamos con:
                 </p>
-                <ul className="space-y-2.5">
+                <ul className="space-y-1.5 lg:space-y-2.5 flex flex-col items-start">
                   {currentContent.features.map((item, index) => (
                     <li
                       key={index}
-                      className="flex items-start text-sm sm:text-base text-muted font-medium"
+                      className="flex items-center lg:items-start text-xs sm:text-base text-muted font-medium text-left"
                     >
-                      <div className="mt-1 mr-3 p-0.5 bg-brand rounded-full shrink-0">
-                        <Check className="w-3 h-3 text-white" />
+                      <div className="mr-2 p-0.5 bg-brand rounded-full shrink-0">
+                        <Check className="w-2.5 h-2.5 lg:w-3 lg:h-3 text-white" />
                       </div>
                       {item}
                     </li>
@@ -139,22 +150,23 @@ const Hero = () => {
                 </ul>
               </div>
 
-              <div className="pt-4 lg:pt-2">
+              <div className="pt-2 lg:pt-2 text-left">
                 <a
                   href="/paquetes"
-                  className="inline-flex items-center text-base lg:text-lg font-bold text-brand hover:text-foreground hover:underline group transition-all"
+                  className="inline-flex items-center text-sm lg:text-lg font-bold text-brand hover:text-foreground hover:underline group transition-all"
                 >
                   Ver paquetes
-                  <ArrowUpRight className="ml-2 w-4 h-4 lg:w-5 lg:h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                  <ArrowUpRight className="ml-1 w-3 h-3 lg:w-5 lg:h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                 </a>
               </div>
             </div>
           </div>
         </div>
 
+        {/* Lado Derecho (Video) */}
         <div
           ref={rightSideWrapper}
-          className="grow h-full flex items-center justify-center relative z-20 order-1 lg:order-2 p-4 lg:p-0"
+          className="order-1 lg:order-2 relative z-20 flex items-center justify-center p-4 lg:p-0 h-[45%] lg:h-full grow"
         >
           <div
             ref={videoInner}
