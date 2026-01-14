@@ -1,4 +1,4 @@
-// src/hooks/useFeatures.ts
+
 import { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -6,7 +6,7 @@ import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(ScrollTrigger);
 
-// Hook para la animación de la lista principal
+
 export const useFeaturesListAnimation = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -37,14 +37,14 @@ export const useFeaturesListAnimation = () => {
   return { containerRef };
 };
 
-// Hook para la animación y lógica del Modal
+
 export const useFeatureModal = (onClose: () => void) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const backdropRef = useRef<HTMLDivElement>(null);
   const modalRef = useRef<HTMLDivElement>(null);
   const isClosing = useRef(false);
 
-  // Animación de entrada
+
   useGSAP(
     () => {
       gsap.fromTo(
@@ -61,7 +61,7 @@ export const useFeatureModal = (onClose: () => void) => {
     { scope: containerRef }
   );
 
-  // Bloquear scroll del body
+
   useEffect(() => {
     document.body.style.overflow = "hidden";
     return () => {
@@ -69,7 +69,7 @@ export const useFeatureModal = (onClose: () => void) => {
     };
   }, []);
 
-  // Manejador de cierre con animación
+
   const handleClose = () => {
     if (isClosing.current) return;
     isClosing.current = true;

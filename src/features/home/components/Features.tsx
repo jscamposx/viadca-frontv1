@@ -1,10 +1,10 @@
-// src/components/Features.tsx
+
 import React, { useState } from "react";
 import { Plus, X } from "lucide-react";
 import { useFeaturesListAnimation, useFeatureModal } from "../hooks/useFeatures";
 import { FEATURES_DATA, Feature } from "../data/features.data";
 
-// --- SUB-COMPONENTE: MODAL ---
+
 interface FeatureModalProps {
   feature: Feature;
   onClose: () => void;
@@ -18,14 +18,14 @@ const FeatureModal = ({ feature, onClose }: FeatureModalProps) => {
       ref={containerRef}
       className="fixed inset-0 z-100 flex items-end md:items-center justify-center"
     >
-      {/* Backdrop */}
+    
       <div
         ref={backdropRef}
         onClick={handleClose}
         className="absolute inset-0 bg-black/60 backdrop-blur-[2px] cursor-pointer"
       />
 
-      {/* Modal Content */}
+ 
       <div
         ref={modalRef}
         className="relative bg-background w-full h-[90vh] md:w-[96%] md:max-w-250 md:h-[92vh] md:rounded-xl shadow-2xl flex flex-col overflow-hidden will-change-transform rounded-t-2xl"
@@ -65,7 +65,7 @@ const FeatureModal = ({ feature, onClose }: FeatureModalProps) => {
   );
 };
 
-// --- COMPONENTE PRINCIPAL: FEATURES ---
+
 const Features = () => {
   const { containerRef } = useFeaturesListAnimation();
   const [selectedFeature, setSelectedFeature] = useState<Feature | null>(null);
@@ -86,7 +86,7 @@ const Features = () => {
 
           <div className="mt-16 border-t border-border"></div>
 
-          {/* Feature List */}
+       
           <div className="flex flex-col">
             {FEATURES_DATA.map((feature, index) => (
               <div key={feature.id} className="feature-card group">
@@ -95,7 +95,7 @@ const Features = () => {
                     index !== 0 ? "border-t border-border" : ""
                   }`}
                 >
-                  {/* Imagen */}
+          
                   <div className="col-span-1 md:col-span-5 w-full">
                     <div
                       className="overflow-hidden rounded-2xl cursor-pointer bg-surface aspect-video w-full max-w-130"
@@ -110,7 +110,7 @@ const Features = () => {
                     </div>
                   </div>
 
-                  {/* Texto */}
+       
                   <div className="col-span-1 md:col-span-7 flex flex-col justify-start">
                     <h3 className="text-2xl font-semibold text-foreground mb-0 leading-tight">
                       {feature.title}
