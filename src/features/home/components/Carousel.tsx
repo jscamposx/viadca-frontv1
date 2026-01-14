@@ -1,4 +1,3 @@
-import React from "react";
 import { useCarousel } from "../hooks/useCarousel";
 import { 
   galleryItems, 
