@@ -1,9 +1,7 @@
-
-import React, { useState } from "react";
+import  { useState } from "react";
 import { Plus, X } from "lucide-react";
 import { useFeaturesListAnimation, useFeatureModal } from "../hooks/useFeatures";
 import { FEATURES_DATA, Feature } from "../data/features.data";
-
 
 interface FeatureModalProps {
   feature: Feature;
@@ -18,19 +16,17 @@ const FeatureModal = ({ feature, onClose }: FeatureModalProps) => {
       ref={containerRef}
       className="fixed inset-0 z-100 flex items-end md:items-center justify-center"
     >
-    
       <div
         ref={backdropRef}
         onClick={handleClose}
         className="absolute inset-0 bg-black/60 backdrop-blur-[2px] cursor-pointer"
       />
 
- 
       <div
         ref={modalRef}
         className="relative bg-background w-full h-[90vh] md:w-[96%] md:max-w-250 md:h-[92vh] md:rounded-xl shadow-2xl flex flex-col overflow-hidden will-change-transform rounded-t-2xl"
       >
-        <div className="flex justify-between items-start pt-10 px-8 md:pt-14 md:px-16 pb-8 bg-background shrink-0 border-b border-border/10">
+        <div className="flex justify-between items-start pt-10 px-8 md:pt-14 md:px-16 pb-8 bg-background shrink-0 border-b border-gray-200 dark:border-white/20">
           <h2 className="text-3xl md:text-5xl font-bold text-foreground tracking-tight max-w-4xl font-serif">
             {feature.title}
           </h2>
@@ -47,7 +43,7 @@ const FeatureModal = ({ feature, onClose }: FeatureModalProps) => {
             {feature.modalDetails.map((item, idx) => (
               <div
                 key={idx}
-                className="flex flex-col gap-4 pt-8 border-t border-border"
+                className="flex flex-col gap-4 pt-8 border-t border-gray-200 dark:border-white/20"
               >
                 <h4 className="text-lg font-bold text-foreground leading-snug">
                   {item.headline}
@@ -65,7 +61,6 @@ const FeatureModal = ({ feature, onClose }: FeatureModalProps) => {
   );
 };
 
-
 const Features = () => {
   const { containerRef } = useFeaturesListAnimation();
   const [selectedFeature, setSelectedFeature] = useState<Feature | null>(null);
@@ -77,25 +72,22 @@ const Features = () => {
         className="bg-background w-full px-6 md:px-12 py-24 transition-colors duration-300"
       >
         <div className="max-w-315 mx-auto">
-          {/* Header */}
           <div className="mb-16">
-            <h2 className="mx-auto max-w-200text-center text-4xl md:text-[64px] leading-[1.05] tracking-[-0.02em] text-foreground font-serif">
+            <h2 className="mx-auto max-w-200 text-center text-4xl md:text-[64px] leading-[1.05] tracking-[-0.02em] text-foreground font-serif">
               Viaja con respaldo total en cada etapa
             </h2>
           </div>
 
-          <div className="mt-16 border-t border-border"></div>
+          <div className="mt-16 border-t border-gray-200 dark:border-white/20"></div>
 
-       
           <div className="flex flex-col">
             {FEATURES_DATA.map((feature, index) => (
               <div key={feature.id} className="feature-card group">
                 <div
                   className={`grid grid-cols-1 md:grid-cols-12 items-start gap-y-8 md:gap-x-20 py-14 ${
-                    index !== 0 ? "border-t border-border" : ""
+                    index !== 0 ? "border-t border-gray-200 dark:border-white/20" : ""
                   }`}
                 >
-          
                   <div className="col-span-1 md:col-span-5 w-full">
                     <div
                       className="overflow-hidden rounded-2xl cursor-pointer bg-surface aspect-video w-full max-w-130"
@@ -110,13 +102,12 @@ const Features = () => {
                     </div>
                   </div>
 
-       
                   <div className="col-span-1 md:col-span-7 flex flex-col justify-start">
                     <h3 className="text-2xl font-semibold text-foreground mb-0 leading-tight">
                       {feature.title}
                     </h3>
 
-                    <p className="mt-4 max-w-130text-base text-muted leading-relaxed">
+                    <p className="mt-4 max-w-130 text-base text-muted leading-relaxed">
                       {feature.description}
                     </p>
 
@@ -137,7 +128,6 @@ const Features = () => {
         </div>
       </section>
 
-   
       {selectedFeature && (
         <FeatureModal
           feature={selectedFeature}
