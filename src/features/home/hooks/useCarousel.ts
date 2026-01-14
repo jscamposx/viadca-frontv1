@@ -1,4 +1,3 @@
-
 import { useRef, useState, useEffect, useLayoutEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -13,7 +12,9 @@ export const useCarousel = () => {
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
 
- 
+  // ----------------------------------------------------------------------
+  // [LÓGICA] Animaciones GSAP
+  // ----------------------------------------------------------------------
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
       gsap.fromTo(
@@ -41,11 +42,14 @@ export const useCarousel = () => {
     return () => ctx.revert();
   }, []);
 
-
+  // ----------------------------------------------------------------------
+  // [LÓGICA] Control del Scroll
+  // ----------------------------------------------------------------------
   const checkScroll = () => {
     if (!scrollRef.current) return;
     const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
     setCanScrollLeft(scrollLeft > 2);
+    // Margen de error pequeño para detectar el final
     setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 10);
   };
 
@@ -55,21 +59,56 @@ export const useCarousel = () => {
     return () => window.removeEventListener("resize", checkScroll);
   }, []);
 
+  /**
+   * Nueva lógica de scroll basada en índices y centrado matemático.
+   * Esto asegura que la tarjeta siempre quede en el medio del contenedor.
+   */
   const scroll = (direction: "left" | "right") => {
     if (!scrollRef.current) return;
-    const isMobile = window.innerWidth < 768;
-    const scrollAmount = isMobile ? 352 + 16 : 650 + 32;
 
-    if (direction === "left") {
-      const currentScroll = scrollRef.current.scrollLeft;
-      if (currentScroll - scrollAmount < 200) {
-        scrollRef.current.scrollTo({ left: 0, behavior: "smooth" });
-      } else {
-        scrollRef.current.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+    const container = scrollRef.current;
+    const containerCenter = container.scrollLeft + container.clientWidth / 2;
+    const cards = cardsRef.current;
+
+    // 1. Encontrar el índice de la tarjeta que está actualmente más cerca del centro
+    let closestIndex = 0;
+    let minDistance = Infinity;
+
+    cards.forEach((card, index) => {
+      if (!card) return;
+      // Calculamos el centro de la tarjeta
+      const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+      const distance = Math.abs(containerCenter - cardCenter);
+
+      if (distance < minDistance) {
+        minDistance = distance;
+        closestIndex = index;
       }
-    } else {
-      scrollRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
+    });
+
+    // 2. Determinar el siguiente índice basado en la dirección
+    let nextIndex = direction === "right" ? closestIndex + 1 : closestIndex - 1;
+
+    // 3. Validar límites para no salirnos del array
+    if (nextIndex < 0) nextIndex = 0;
+    if (nextIndex >= cards.length) nextIndex = cards.length - 1;
+
+    // 4. Calcular la posición exacta para centrar la tarjeta objetivo
+    const targetCard = cards[nextIndex];
+
+    if (targetCard) {
+      // Fórmula: Posición Tarjeta - (Mitad Contenedor) + (Mitad Tarjeta)
+      const scrollPos =
+        targetCard.offsetLeft -
+        container.clientWidth / 2 +
+        targetCard.offsetWidth / 2;
+
+      container.scrollTo({
+        left: scrollPos,
+        behavior: "smooth",
+      });
     }
+
     setTimeout(checkScroll, 600);
   };
 

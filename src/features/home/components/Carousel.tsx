@@ -73,14 +73,16 @@ export default function Carousel() {
         </div>
       </div>
 
+    
       <div
         ref={scrollRef}
         onScroll={checkScroll}
         className="flex w-full overflow-x-auto overflow-y-hidden snap-x snap-mandatory gap-4 md:gap-8 pb-4 scrollbar-hide"
         style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
       >
+    
         <div
-          className="shrink-0 snap-start w-6 md:w-auto"
+          className="shrink-0 snap-center w-0 md:w-auto"
           style={{
             width: `max(0px, calc((100% - ${CONTENT_MAX_WIDTH}px) / 2 - 8px))`,
           }}
@@ -90,11 +92,12 @@ export default function Carousel() {
           <div
             key={item.id}
             ref={addToRefs}
-            className={`flex flex-col shrink-0 snap-start ${
+          
+            className={`flex flex-col shrink-0 snap-center ${
               CARD_SIZES[item.type] || CARD_SIZES.narrow
             }`}
           >
-            <div className="w-full h-[480px] md:h-[680px] rounded-3xl md:rounded-4xl overflow-hidden bg-surface relative group cursor-pointer border border-border/10 dark:border-white/10 shadow-sm">
+            <div className="w-full h-120 md:h-170 rounded-3xl md:rounded-4xl overflow-hidden bg-surface relative group cursor-pointer border border-border/10 dark:border-white/10 shadow-sm">
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500 z-10" />
               <img
                 src={item.imgSrc}
@@ -104,7 +107,7 @@ export default function Carousel() {
               />
             </div>
 
-            <div className="max-w-[760px] mt-6 mx-[15px] mb-0">
+            <div className="max-w-190 mt-6 mx-3.75 mb-0">
               <p className="text-[14px] md:text-[17px] leading-snug tracking-[-0.022em]">
                 <span className="font-semibold text-foreground">
                   {item.title}
@@ -117,8 +120,9 @@ export default function Carousel() {
           </div>
         ))}
 
+        {/* CAMBIO: w-0 en móvil también al final */}
         <div
-          className="shrink-0 w-6 md:w-auto"
+          className="shrink-0 w-0 md:w-auto"
           style={{
             width: `max(0px, calc((100% - ${CONTENT_MAX_WIDTH}px) / 2 - 8px))`,
           }}

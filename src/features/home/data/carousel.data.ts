@@ -1,5 +1,3 @@
-
-
 export type CardSize = "narrow" | "large" | "wide";
 
 export interface GalleryItem {
@@ -11,13 +9,11 @@ export interface GalleryItem {
   imgPosition: string;
 }
 
-
 export const CARD_SIZES: Record<CardSize, string> = {
-  narrow: "w-[352px] md:w-[400px]",
-  large: "w-[352px] md:w-[620px]",
-  wide: "w-[352px] md:w-[832px]",
+  narrow: "w-[85vw] sm:w-[352px] md:w-[400px]",
+  large: "w-[85vw] sm:w-[352px] md:w-[620px]",
+  wide: "w-[85vw] sm:w-[352px] md:w-[832px]",
 };
-
 
 export const CONTENT_MAX_WIDTH = 1260;
 
