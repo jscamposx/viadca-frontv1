@@ -119,7 +119,6 @@ export default function Carousel() {
           </div>
         ))}
 
-        {/* CAMBIO: w-0 en móvil también al final */}
         <div
           className="shrink-0 w-0 md:w-auto"
           style={{
