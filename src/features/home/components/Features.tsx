@@ -1,7 +1,8 @@
 import  { useState } from "react";
 import { Plus, X } from "lucide-react";
 import { useFeaturesListAnimation, useFeatureModal } from "../hooks/useFeatures";
-import { FEATURES_DATA, Feature } from "../data/features.data";
+import { FEATURES_DATA } from "../data/features.data";
+import type { Feature } from "../data/features.data";
 
 interface FeatureModalProps {
   feature: Feature;
