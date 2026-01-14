@@ -76,23 +76,17 @@ const Hero = () => {
         </div>
       </section>
 
-      {/* Contenedor Principal Bloqueado al alto de pantalla */}
       <div
         ref={container}
         className="w-full h-dvh flex flex-col lg:flex-row items-stretch overflow-hidden relative bg-background"
       >
-        {/* Lado Izquierdo (Texto y Tabs) - Orden 2 en móvil (abajo) */}
-        <div
+       <div
           ref={leftContent}
-          // Lógica: justify-start en móvil/tablet para pegar contenido arriba. Center en Desktop.
-          className="bg-background z-30 flex flex-col justify-start lg:justify-center relative border-r border-surface/50 order-2 lg:order-1 h-[55%] lg:h-full overflow-hidden"
+         className="bg-background z-30 flex flex-col justify-start lg:justify-center relative border-r border-surface/50 order-2 lg:order-1 h-[55%] lg:h-full overflow-hidden"
         >
           <div
             ref={leftContentInner}
-            // CAMBIO CLAVE AQUÍ:
-            // max-w-xl (móvil) -> md:max-w-3xl (tablet: más ancho) -> lg:max-w-xl (desktop: vuelve a angosto porque la pantalla se divide)
-            // paddings ajustados progresivamente: px-6 -> md:px-10 -> lg:px-12
-            className="w-full max-w-xl md:max-w-3xl lg:max-w-xl mx-auto px-6 md:px-10 lg:px-12 flex flex-col justify-start lg:justify-center h-full pt-6 lg:pt-0 lg:py-0"
+           className="w-full max-w-xl md:max-w-3xl lg:max-w-xl mx-auto px-6 md:px-10 lg:px-12 flex flex-col justify-start lg:justify-center h-full pt-6 lg:pt-0 lg:py-0"
           >
             <div className="flex flex-nowrap justify-start gap-2 mb-4 lg:mb-8 w-full">
               {Object.keys(HERO_CONTENT).map((key) => (
@@ -163,7 +157,6 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Lado Derecho (Video) */}
         <div
           ref={rightSideWrapper}
           className="order-1 lg:order-2 relative z-20 flex items-center justify-center p-4 lg:p-0 h-[45%] lg:h-full grow"
