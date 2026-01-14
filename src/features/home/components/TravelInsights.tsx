@@ -1,5 +1,3 @@
-
-import React from 'react';
 import { useTravelInsights } from '../hooks/useTravelInsights';
 import { TRAVEL_INSIGHTS_DATA } from '../data/travelInsights.data';
 
