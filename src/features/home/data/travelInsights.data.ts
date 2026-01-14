@@ -1,7 +1,7 @@
-import insightsInspirateImg from "../assets/images/insights-inspirate.avif";
-import insightsBloqueosImg from "../assets/images/insights-bloqueos.avif";
-import insightsRutaImg from "../assets/images/insights-ruta.avif";
-import insightsMesesImg from "../assets/images/insights-meses.avif";
+import insightsInspirateImg from "../assets/images/insights/insights-inspirate.avif";
+import insightsBloqueosImg from "../assets/images/insights/insights-bloqueos.avif";
+import insightsRutaImg from "../assets/images/insights/insights-ruta.avif";
+import insightsMesesImg from "../assets/images/insights/insights-meses.avif";
 
 export interface InsightItem {
   id: number;

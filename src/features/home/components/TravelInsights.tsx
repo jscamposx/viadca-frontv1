@@ -7,7 +7,7 @@ const TravelInsights = () => {
   return (
     <section className="bg-background w-full py-16 md:py-24 lg:py-32 px-6 md:px-12 font-sans transition-colors duration-300">
       <div className="max-w-315 mx-auto">
-        {/* Título */}
+
         <div className="mb-12 lg:mb-24 max-w-4xl">
           <h2 className="text-4xl md:text-[56px] lg:text-[64px] font-serif font-medium text-foreground tracking-tight leading-[1.05]">
             Viaja informado y con respaldo

@@ -1,7 +1,7 @@
-import featuresMedidaImg from "../assets/images/features-medida.avif";
-import featuresDocumentacionImg from "../assets/images/features-documentacion.avif";
-import featuresAsesoriaImg from "../assets/images/features-asesoria.avif";
-import featuresPagosImg from "../assets/images/features-pagos.avif";
+import featuresMedidaImg from "../assets/images/features/features-medida.avif";
+import featuresDocumentacionImg from "../assets/images/features/features-documentacion.avif";
+import featuresAsesoriaImg from "../assets/images/features/features-asesoria.avif";
+import featuresPagosImg from "../assets/images/features/features-pagos.avif";
 
 export interface ModalDetail {
   headline: string;
