@@ -126,51 +126,6 @@ export default function Carousel() {
           }}
         />
       </div>
-
-      <div
-        className="w-full mx-auto px-6 mt-8 flex md:hidden gap-3"
-        style={{ maxWidth: `${CONTENT_MAX_WIDTH}px` }}
-      >
-        <button
-          onClick={() => scroll("left")}
-          disabled={!canScrollLeft}
-          className={`
-            w-8 h-8 rounded-full flex items-center justify-center 
-            transition-all duration-200 disabled:opacity-30 disabled:cursor-default
-            bg-gray-200 hover:bg-gray-300 text-gray-900 
-            dark:bg-[#333336] dark:hover:bg-[#464649] dark:text-[#f5f5f7]
-          `}
-        >
-          <svg width="10" height="16" viewBox="0 0 10 16" fill="none">
-            <path
-              d="M8.5 1.5L2 8L8.5 14.5"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-            />
-          </svg>
-        </button>
-
-        <button
-          onClick={() => scroll("right")}
-          disabled={!canScrollRight}
-          className={`
-            w-8 h-8 rounded-full flex items-center justify-center 
-            transition-all duration-200 disabled:opacity-30 disabled:cursor-default
-            bg-gray-200 hover:bg-gray-300 text-gray-900 
-            dark:bg-[#333336] dark:hover:bg-[#464649] dark:text-[#f5f5f7]
-          `}
-        >
-          <svg width="10" height="16" viewBox="0 0 10 16" fill="none">
-            <path
-              d="M1.5 1.5L8 8L1.5 14.5"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-            />
-          </svg>
-        </button>
-      </div>
     </div>
   );
 }

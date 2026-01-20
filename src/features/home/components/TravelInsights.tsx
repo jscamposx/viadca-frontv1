@@ -64,7 +64,7 @@ const TravelInsights = () => {
 
                       {/* Imagen Móvil (Inline) */}
                       <div className="block lg:hidden w-full">
-                         <div className="bg-gray-100 dark:bg-white/5 rounded-2xl p-8 flex items-center justify-center">
+                         <div className="bg-gray-100 dark:bg-white/5 rounded-2xl flex items-center justify-center">
                             <img 
                               src={item.image} 
                               alt={item.title} 

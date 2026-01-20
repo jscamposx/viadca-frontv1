@@ -74,7 +74,7 @@ const Features = () => {
       >
         <div className="max-w-315 mx-auto">
           <div className="mb-16">
-            <h2 className="mx-auto max-w-200 text-center text-4xl md:text-[64px] leading-[1.05] tracking-[-0.02em] text-foreground font-serif">
+            <h2 className="mx-auto max-w-300 text-center text-4xl md:text-[64px] leading-[1.05] tracking-[-0.02em] text-foreground font-serif">
               Viaja con respaldo total en cada etapa
             </h2>
           </div>
