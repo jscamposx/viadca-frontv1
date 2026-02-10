@@ -2,7 +2,8 @@ import { useEffect, useRef, useState, useMemo } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-import { LOGOS_DATA, LogoItem } from "../data/logos.data";
+import { LOGOS_DATA } from "../data/logos.data";
+import type { LogoItem } from "../data/logos.data";
 
 gsap.registerPlugin(ScrollTrigger);
 
