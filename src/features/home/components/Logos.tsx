@@ -1,5 +1,5 @@
 import { useLogosCarousel } from "../hooks/useLogosCarousel";
-import type { LogoItem } from "../data/logos.data";
+import { LogoItem } from "../data/logos.data";
 
 interface LogosProps {
   logos?: LogoItem[];
@@ -24,8 +24,6 @@ const Logos = ({ logos }: LogosProps) => {
       role="region"
     >
       <div className="max-w-315 mx-auto">
-        
-
         <div
           ref={containerRef}
           onMouseEnter={() => setPaused(true)}
@@ -33,10 +31,10 @@ const Logos = ({ logos }: LogosProps) => {
           onFocus={() => setPaused(true)}
           onBlur={() => setPaused(false)}
           tabIndex={0}
-          className="relative overflow-hidden" 
+          className="relative overflow-hidden"
           aria-live="polite"
         >
-   
+
           <div
             className="pointer-events-none absolute left-0 top-0 h-full w-16 sm:w-24 lg:w-32 bg-linear-to-r from-background to-transparent z-10"
             aria-hidden="true"
@@ -46,7 +44,7 @@ const Logos = ({ logos }: LogosProps) => {
             aria-hidden="true"
           />
 
-
+          {/* TRACK */}
           <div
             ref={trackRef}
             className="flex w-max items-center py-6 px-2 sm:px-4 will-change-transform select-none"
@@ -76,7 +74,7 @@ const Logos = ({ logos }: LogosProps) => {
                         height={logo.height || undefined}
                         className={`${
                           logo.h || "h-16"
-                        } w-auto dark:invert transition-all duration-300 ease-linear hover:scale-105`}
+                        } w-auto transition-all duration-300 ease-linear hover:scale-105   `}
                         decoding="async"
                         loading="lazy"
                         draggable="false"
