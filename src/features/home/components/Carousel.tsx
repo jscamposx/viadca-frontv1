@@ -35,6 +35,7 @@ export default function Carousel() {
 
         <div className="hidden md:flex gap-3">
           <button
+            type="button"
             onClick={() => scroll("left")}
             disabled={!canScrollLeft}
             aria-label="Ver anteriores"
@@ -56,6 +57,7 @@ export default function Carousel() {
           </button>
 
           <button
+            type="button"
             onClick={() => scroll("right")}
             disabled={!canScrollRight}
             aria-label="Ver siguientes"
@@ -102,7 +104,10 @@ export default function Carousel() {
             }`}
           >
             <div className="w-full h-120 md:h-170 rounded-3xl md:rounded-4xl overflow-hidden bg-surface relative group cursor-pointer border border-border/10 dark:border-white/10 shadow-sm">
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500 z-10" />
+              <div
+                aria-hidden="true"
+                className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500 z-10"
+              />
               <img
                 src={item.imgSrc}
                 alt={item.title}
