@@ -1,3 +1,12 @@
+import logo1 from "../assets/images/logos/logo1.avif";
+import logo2 from "../assets/images/logos/logo2.avif";
+import logo3 from "../assets/images/logos/logo3.avif";
+import logo7 from "../assets/images/logos/logo7.avif";
+import logo6 from "../assets/images/logos/logo6.avif";
+import logo8 from "../assets/images/logos/logo8.avif";
+import logo9 from "../assets/images/logos/logo9.avif";
+import logo10 from "../assets/images/logos/logo10.avif";
+
 export interface LogoItem {
   src: string;
   alt: string;
@@ -7,14 +16,9 @@ export interface LogoItem {
   boxed?: boolean;
 }
 
-import logo1 from "../assets/images/logos/logo1.avif";
-import logo2 from "../assets/images/logos/logo2.avif";
-import logo3 from "../assets/images/logos/logo3.avif";
-import logo7 from "../assets/images/logos/logo7.avif";
-import logo6 from "../assets/images/logos/logo6.avif";
-import logo8 from "../assets/images/logos/logo8.avif";
-import logo9 from "../assets/images/logos/logo9.avif";
-import logo10 from "../assets/images/logos/logo10.avif";
+export const LOGOS_UI = {
+  sectionLabel: "Galería de socios y colaboradores",
+};
 
 export const LOGOS_DATA: LogoItem[] = [
   { src: logo1, alt: "Partner 1", h: "h-24", width: 240, height: 96 },

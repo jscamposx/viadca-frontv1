@@ -1,5 +1,5 @@
 import { useTravelInsights } from '../hooks/useTravelInsights';
-import { TRAVEL_INSIGHTS_DATA } from '../data/travelInsights.data';
+import { TRAVEL_INSIGHTS_DATA, TRAVEL_INSIGHTS_UI } from '../data/travelInsights.data';
 
 const TravelInsights = () => {
   const { activeId, setActiveId } = useTravelInsights();
@@ -15,7 +15,7 @@ const TravelInsights = () => {
             id="insights-heading"
             className="text-4xl md:text-[56px] lg:text-[64px] font-serif font-medium text-foreground tracking-tight leading-[1.05]"
           >
-            Viaja informado y con respaldo
+            {TRAVEL_INSIGHTS_UI.heading}
           </h2>
         </header>
 

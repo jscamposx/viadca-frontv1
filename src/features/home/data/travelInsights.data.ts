@@ -10,6 +10,10 @@ export interface InsightItem {
   image: string;
 }
 
+export const TRAVEL_INSIGHTS_UI = {
+  heading: "Viaja informado y con respaldo",
+};
+
 export const TRAVEL_INSIGHTS_DATA: InsightItem[] = [
   {
     id: 1,

@@ -17,6 +17,14 @@ export const CARD_SIZES: Record<CardSize, string> = {
 
 export const CONTENT_MAX_WIDTH = 1260;
 
+export const CAROUSEL_UI = {
+  title: "Fotos pro hasta el último pixel.",
+  controls: {
+    prevLabel: "Ver anteriores",
+    nextLabel: "Ver siguientes",
+  },
+};
+
 export const galleryItems: GalleryItem[] = [
   {
     id: 1,

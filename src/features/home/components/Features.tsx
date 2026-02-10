@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Plus, X } from "lucide-react";
 import { useFeaturesListAnimation, useFeatureModal } from "../hooks/useFeatures";
-import { FEATURES_DATA } from "../data/features.data";
+import { FEATURES_DATA, FEATURES_UI } from "../data/features.data";
 import type { Feature } from "../data/features.data";
 
 interface FeatureModalProps {
@@ -41,7 +41,7 @@ const FeatureModal = ({ feature, onClose }: FeatureModalProps) => {
           <button
             onClick={handleClose}
             className="p-3 hover:bg-surface rounded-full transition-colors -mr-2 -mt-2 text-foreground"
-            aria-label="Cerrar modal"
+            aria-label={FEATURES_UI.modalCloseLabel}
           >
             <X className="w-8 h-8" aria-hidden="true" />
           </button>
@@ -87,7 +87,7 @@ const Features = () => {
               id="features-heading"
               className="mx-auto max-w-300 text-center text-4xl md:text-[64px] leading-[1.05] tracking-[-0.02em] text-foreground font-serif"
             >
-              Viaja con respaldo total en cada etapa
+              {FEATURES_UI.sectionTitle}
             </h2>
           </header>
 
@@ -105,7 +105,7 @@ const Features = () => {
                     <button
                       className="overflow-hidden rounded-2xl cursor-pointer bg-surface aspect-video w-full max-w-130 border-0 p-0 block text-left"
                       onClick={() => setSelectedFeature(feature)}
-                      aria-label={`Ver detalles de ${feature.title}`}
+                      aria-label={FEATURES_UI.detailAriaLabel(feature.title)}
                     >
                       <img
                         src={feature.image}
@@ -129,9 +129,9 @@ const Features = () => {
                       <button
                         onClick={() => setSelectedFeature(feature)}
                         className="inline-flex items-center text-base font-bold text-brand hover:text-foreground hover:underline decoration-2 underline-offset-4 transition-all"
-                        aria-label={`Más información sobre ${feature.title}`}
+                        aria-label={FEATURES_UI.moreInfoAriaLabel(feature.title)}
                       >
-                        Más información{" "}
+                        {FEATURES_UI.ctaLabel}{" "}
                         <Plus className="w-4 h-4 ml-1 stroke-3" aria-hidden="true" />
                       </button>
                     </div>

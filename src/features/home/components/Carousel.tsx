@@ -2,7 +2,8 @@ import { useCarousel } from "../hooks/useCarousel";
 import { 
   galleryItems, 
   CARD_SIZES, 
-  CONTENT_MAX_WIDTH 
+  CONTENT_MAX_WIDTH,
+  CAROUSEL_UI
 } from "../data/carousel.data";
 
 export default function Carousel() {
@@ -30,7 +31,7 @@ export default function Carousel() {
           id="carousel-title"
           className="text-[24px] leading-tight md:leading-tight font-semibold tracking-[-0.015em] md:text-[32px] text-foreground"
         >
-          Fotos pro hasta el último pixel.
+          {CAROUSEL_UI.title}
         </h2>
 
         <div className="hidden md:flex gap-3">
@@ -38,7 +39,7 @@ export default function Carousel() {
             type="button"
             onClick={() => scroll("left")}
             disabled={!canScrollLeft}
-            aria-label="Ver anteriores"
+            aria-label={CAROUSEL_UI.controls.prevLabel}
             className={`
               w-9 h-9 rounded-full flex items-center justify-center 
               transition-all duration-200 disabled:opacity-30 disabled:cursor-default
@@ -60,7 +61,7 @@ export default function Carousel() {
             type="button"
             onClick={() => scroll("right")}
             disabled={!canScrollRight}
-            aria-label="Ver siguientes"
+            aria-label={CAROUSEL_UI.controls.nextLabel}
             className={`
               w-9 h-9 rounded-full flex items-center justify-center 
               transition-all duration-200 disabled:opacity-30 disabled:cursor-default

@@ -14,6 +14,14 @@ export interface Review {
   accentTo?: string;
 }
 
+export const REVIEWS_UI = {
+  eyebrow: "Testimonios",
+  heading: "Lo que dicen nuestros clientes.",
+  description: "Experiencias reales de viajeros que eligieron Viadca para planear sus vacaciones y viajes de trabajo.",
+  recentLabel: "Historias recientes",
+  ratingLabel: (score: number) => `Calificación ${score} de 5`,
+};
+
 export const REVIEWS_DATA: Review[] = [
   {
     id: 1,

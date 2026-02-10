@@ -17,6 +17,14 @@ export interface Feature {
   modalDetails: ModalDetail[];
 }
 
+export const FEATURES_UI = {
+  sectionTitle: "Viaja con respaldo total en cada etapa",
+  ctaLabel: "Más información",
+  modalCloseLabel: "Cerrar modal",
+  detailAriaLabel: (title: string) => `Ver detalles de ${title}`,
+  moreInfoAriaLabel: (title: string) => `Más información sobre ${title}`,
+};
+
 export const FEATURES_DATA: Feature[] = [
   {
     id: "tailor",

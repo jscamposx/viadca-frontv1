@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { LEGAL_CONTENT } from "../data/legalfoot.data";
+import { LEGAL_CONTENT, LEGAL_FOOTER_UI } from "../data/legalfoot.data";
 
 const LegalFoot = () => {
   const renderSegments = (segments: typeof LEGAL_CONTENT.column1[0]['segments']) => {
@@ -21,7 +21,7 @@ const LegalFoot = () => {
 
   return (
     <aside
-      aria-label="Notas legales"
+      aria-label={LEGAL_FOOTER_UI.ariaLabel}
       className="w-full bg-background px-6 md:px-12 border-t border-surface py-8 md:py-12 transition-colors duration-300"
     >
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12 text-xs leading-relaxed text-muted">

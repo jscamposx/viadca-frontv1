@@ -1,5 +1,6 @@
 import { Star, Quote } from "lucide-react";
 import { useReviews } from "../hooks/useReviews";
+import { REVIEWS_UI } from "../data/reviews.data";
 
 const Reviews = () => {
   const { containerRef, trackRef, reviews, scroll } = useReviews();
@@ -42,17 +43,16 @@ const Reviews = () => {
         <header className="lg:col-span-4 flex flex-col gap-8">
           <div className="space-y-3">
             <p className="text-sm font-semibold uppercase tracking-[0.22em] text-foreground/80">
-              Testimonios
+              {REVIEWS_UI.eyebrow}
             </p>
             <h2
               id="reviews-heading"
               className="text-4xl md:text-[56px] leading-[1.05] tracking-tight font-serif font-medium text-foreground"
             >
-              Lo que dicen nuestros clientes.
+              {REVIEWS_UI.heading}
             </h2>
             <p className="text-base md:text-lg text-muted leading-relaxed max-w-xl">
-              Experiencias reales de viajeros que eligieron Viadca para planear sus
-              vacaciones y viajes de trabajo.
+              {REVIEWS_UI.description}
             </p>
           </div>
         </header>
@@ -60,7 +60,7 @@ const Reviews = () => {
         <div className="lg:col-span-8 relative">
           
           <div className="flex justify-between items-center mb-4 md:mb-6">
-            <p className="text-sm text-muted">Historias recientes</p>
+            <p className="text-sm text-muted">{REVIEWS_UI.recentLabel}</p>
             <div className="hidden md:flex gap-3">
               <button
                 type="button"
@@ -128,7 +128,7 @@ const Reviews = () => {
                   <span
                     className="flex items-center gap-1"
                     role="img"
-                    aria-label={`Calificación ${review.score} de 5`}
+                    aria-label={REVIEWS_UI.ratingLabel(review.score)}
                   >
                     {renderStars(review.score)}
                   </span>

@@ -1,5 +1,5 @@
 import { useLogosCarousel } from "../hooks/useLogosCarousel";
-import type { LogoItem } from "../data/logos.data";
+import { LOGOS_UI, type LogoItem } from "../data/logos.data";
 
 interface LogosProps {
   logos?: LogoItem[];
@@ -19,7 +19,7 @@ const Logos = ({ logos }: LogosProps) => {
     <section
       id="socios"
       ref={sectionRef}
-      aria-label="Galería de socios y colaboradores"
+      aria-label={LOGOS_UI.sectionLabel}
       className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 relative scroll-mt-32 bg-background overflow-hidden transition-colors duration-300"
     >
       <div className="max-w-315 mx-auto">

@@ -25,7 +25,7 @@ const ContactCTA = () => {
         <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
           <button
             type="button"
-            onClick={() => console.log('Click en WhatsApp')}
+            onClick={() => console.log(CONTACT_CONTENT.logWhatsAppClick)}
             className="group relative inline-flex items-center justify-center px-8 py-5 text-lg font-bold text-background bg-foreground rounded-full overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-foreground w-full sm:w-auto cursor-pointer"
           >
             <span className="relative z-10 flex items-center">

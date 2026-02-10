@@ -67,3 +67,7 @@ export const LEGAL_CONTENT: { column1: LegalItem[]; column2: LegalItem[] } = {
     },
   ],
 };
+
+export const LEGAL_FOOTER_UI = {
+  ariaLabel: "Notas legales",
+};

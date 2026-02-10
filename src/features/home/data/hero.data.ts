@@ -62,3 +62,36 @@ export const HERO_CONTENT: Record<string, HeroContentItem> = {
     videoWebm: null,
   },
 };
+
+export const HERO_UI = {
+  eyebrow: "Agencia de viajes",
+  title: {
+    line1: "Vive experiencias únicas",
+    line2: "y viaja tranquilo con",
+    brand: "Viadca",
+  },
+  ctas: {
+    primary: {
+      mobile: "WhatsApp",
+      desktop: "Consultar en WhatsApp",
+    },
+    secondary: {
+      mobile: "Llamar",
+      desktop: "Llamar ahora",
+    },
+  },
+  tabsAriaLabel: "Categorías de viajes",
+  helpTitle: "Te ayudamos con:",
+  packagesLink: {
+    href: "/paquetes",
+    label: "Ver paquetes",
+  },
+  overlay: {
+    line1: "Planea tu siguiente viaje",
+    line2: "con Viadca.",
+  },
+  captions: {
+    srcLang: "es",
+    label: "Español",
+  },
+};

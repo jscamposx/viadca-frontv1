@@ -1,7 +1,8 @@
 import { useState, useRef, useEffect } from "react";
 import { ArrowUpRight, Check } from "lucide-react";
 import { useHeroAnimation } from "../hooks/useHeroAnimation";
-import { HERO_CONTENT } from "../data/hero.data";
+import { HERO_CONTENT, HERO_UI } from "../data/hero.data";
+
 
 const Hero = () => {
   const [activeTab, setActiveTab] = useState<string>("mexico");
@@ -38,7 +39,7 @@ const Hero = () => {
       <header className="flex flex-col items-center justify-center w-full max-w-7xl mx-auto px-6 relative pb-4 md:pb-20">
         <div className="w-full flex justify-center mb-4 md:mb-6">
           <span className="text-sm md:text-2xl font-bold uppercase text-brand tracking-wider text-center block">
-            Agencia de viajes
+            {HERO_UI.eyebrow}
           </span>
         </div>
 
@@ -48,8 +49,8 @@ const Hero = () => {
               isTransitioning ? "opacity-0" : "opacity-100"
             }`}
           >
-            Vive experiencias únicas <br className="hidden md:block" /> y viaja
-            tranquilo con <span className="text-brand">Viadca</span>
+            {HERO_UI.title.line1} <br className="hidden md:block" /> {HERO_UI.title.line2}{" "}
+            <span className="text-brand">{HERO_UI.title.brand}</span>
           </h1>
         </div>
 
@@ -59,8 +60,8 @@ const Hero = () => {
             className="group w-full sm:w-auto inline-flex items-center justify-center h-12 md:h-14 px-8 rounded-full border-2 border-brand bg-transparent text-brand font-bold text-sm md:text-base cursor-pointer transition-all duration-200 hover:bg-brand/10"
           >
             <span className="block transition-transform duration-300 group-hover:scale-95">
-              <span className="md:hidden">WhatsApp</span>
-              <span className="hidden md:inline">Consultar en WhatsApp</span>
+              <span className="md:hidden">{HERO_UI.ctas.primary.mobile}</span>
+              <span className="hidden md:inline">{HERO_UI.ctas.primary.desktop}</span>
             </span>
           </button>
 
@@ -69,8 +70,8 @@ const Hero = () => {
             className="group w-full sm:w-auto inline-flex items-center justify-center h-12 md:h-14 px-8 rounded-full border-2 border-brand bg-brand text-brand-foreground font-bold text-sm md:text-base cursor-pointer transition-all duration-200 hover:brightness-110 shadow-[0_0_20px_rgba(5,169,236,0.3)]"
           >
             <span className="block transition-transform duration-300 group-hover:scale-95">
-              <span className="md:hidden">Llamar</span>
-              <span className="hidden md:inline">Llamar ahora</span>
+              <span className="md:hidden">{HERO_UI.ctas.secondary.mobile}</span>
+              <span className="hidden md:inline">{HERO_UI.ctas.secondary.desktop}</span>
             </span>
           </button>
         </div>
@@ -88,7 +89,7 @@ const Hero = () => {
             ref={leftContentInner}
             className="w-full max-w-xl md:max-w-3xl lg:max-w-xl mx-auto px-6 md:px-10 lg:px-12 flex flex-col justify-start lg:justify-center h-full pt-6 lg:pt-0 lg:py-0"
           >
-            <nav className="flex flex-nowrap justify-start gap-2 mb-4 lg:mb-8 w-full" aria-label="Categorías de viajes">
+            <nav className="flex flex-nowrap justify-start gap-2 mb-4 lg:mb-8 w-full" aria-label={HERO_UI.tabsAriaLabel}>
               {Object.keys(HERO_CONTENT).map((key) => (
                 <button
                   key={key}
@@ -129,7 +130,7 @@ const Hero = () => {
 
               <div className="w-full">
                 <p className="text-[10px] sm:text-sm font-bold text-foreground uppercase tracking-wide mb-2 lg:mb-3 text-left">
-                  Te ayudamos con:
+                  {HERO_UI.helpTitle}
                 </p>
                 <ul className="space-y-1.5 lg:space-y-2.5 flex flex-col items-start">
                   {currentContent.features.map((item, index) => (
@@ -148,10 +149,10 @@ const Hero = () => {
 
               <div className="pt-2 lg:pt-2 text-left">
                 <a
-                  href="/paquetes"
+                  href={HERO_UI.packagesLink.href}
                   className="inline-flex items-center text-sm lg:text-lg font-bold text-brand hover:text-foreground hover:underline group transition-all"
                 >
-                  Ver paquetes
+                  {HERO_UI.packagesLink.label}
                   <ArrowUpRight className="ml-1 w-3 h-3 lg:w-5 lg:h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" aria-hidden="true" />
                 </a>
               </div>
@@ -187,8 +188,9 @@ const Hero = () => {
               )}
               <track
                 kind="captions"
-                srcLang="es"
-                label="Español"
+         
+                srcLang={HERO_UI.captions.srcLang}
+                label={HERO_UI.captions.label}
                 default
               />
             </video>
@@ -205,7 +207,7 @@ const Hero = () => {
               className="absolute inset-0 z-20 flex flex-col items-center justify-center p-6 text-center pointer-events-none opacity-0"
             >
               <h2 className="text-white text-3xl sm:text-4xl lg:text-6xl font-bold leading-tight drop-shadow-lg font-serif">
-                Planea tu siguiente viaje <br /> con Viadca.
+                {HERO_UI.overlay.line1} <br /> {HERO_UI.overlay.line2}
               </h2>
             </div>
           </div>
