@@ -64,7 +64,7 @@ export const HERO_CONTENT: Record<string, HeroContentItem> = {
 };
 
 export const HERO_UI = {
-  eyebrow: "Agencia de viajes",
+  eyebrow: "Agencia de viajes ",
   title: {
     line1: "Vive experiencias únicas",
     line2: "y viaja tranquilo con",

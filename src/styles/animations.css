@@ -19,3 +19,79 @@
     clip-path: circle(150vmax at var(--transition-x, 50%) var(--transition-y, 50%));
   }
 }
+
+@keyframes fade-up-soft {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 16px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.carousel-track {
+  scroll-behavior: smooth;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+}
+
+.carousel-card {
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform, box-shadow;
+}
+
+.carousel-card-item {
+  position: relative;
+}
+
+.carousel-card-item:hover {
+  z-index: 2;
+}
+
+.carousel-card:hover {
+  transform: translate3d(0, -8px, 0);
+  box-shadow: 0 34px 90px -50px rgba(15, 23, 42, 0.6);
+}
+
+.carousel-card-media {
+  box-shadow: 0 18px 50px -40px rgba(15, 23, 42, 0.55);
+}
+
+.carousel-card-image {
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.carousel-card:hover .carousel-card-image {
+  transform: scale(1.06);
+}
+
+.carousel-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(2, 6, 23, 0) 40%, rgba(2, 6, 23, 0.82) 100%);
+  z-index: 1;
+}
+
+.carousel-card-caption {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 24px;
+  z-index: 2;
+}
+
+.carousel-card-title {
+  font-size: 1.05rem;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  margin: 0 0 6px 0;
+}
+
+.carousel-card-description {
+  font-size: 0.92rem;
+  line-height: 1.45;
+  margin: 0;
+}
