@@ -17,15 +17,19 @@ export default function Carousel() {
   } = useCarousel();
 
   return (
-    <div
+    <section
       ref={containerRef}
+      aria-labelledby="carousel-title"
       className="bg-background w-full min-h-[95vh] flex flex-col justify-center font-sans text-foreground py-12 md:py-0 overflow-hidden transition-colors duration-300"
     >
       <div
         className="w-full mx-auto mb-6 md:mb-10 px-6 flex items-end justify-between"
         style={{ maxWidth: `${CONTENT_MAX_WIDTH}px` }}
       >
-        <h2 className="text-[24px] leading-tight md:leading-tight font-semibold tracking-[-0.015em] md:text-[32px] text-foreground">
+        <h2 
+          id="carousel-title"
+          className="text-[24px] leading-tight md:leading-tight font-semibold tracking-[-0.015em] md:text-[32px] text-foreground"
+        >
           Fotos pro hasta el último pixel.
         </h2>
 
@@ -41,7 +45,7 @@ export default function Carousel() {
               dark:bg-[#333336] dark:hover:bg-[#464649] dark:text-[#f5f5f7]
             `}
           >
-            <svg width="10" height="16" viewBox="0 0 10 16" fill="none">
+            <svg width="10" height="16" viewBox="0 0 10 16" fill="none" aria-hidden="true">
               <path
                 d="M8.5 1.5L2 8L8.5 14.5"
                 stroke="currentColor"
@@ -62,7 +66,7 @@ export default function Carousel() {
               dark:bg-[#333336] dark:hover:bg-[#464649] dark:text-[#f5f5f7]
             `}
           >
-            <svg width="10" height="16" viewBox="0 0 10 16" fill="none">
+            <svg width="10" height="16" viewBox="0 0 10 16" fill="none" aria-hidden="true">
               <path
                 d="M1.5 1.5L8 8L1.5 14.5"
                 stroke="currentColor"
@@ -81,8 +85,8 @@ export default function Carousel() {
         className="flex w-full overflow-x-auto overflow-y-hidden snap-x snap-mandatory gap-4 md:gap-8 pb-4 scrollbar-hide"
         style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
       >
-    
         <div
+          aria-hidden="true"
           className="shrink-0 snap-center w-0 md:w-auto"
           style={{
             width: `max(0px, calc((100% - ${CONTENT_MAX_WIDTH}px) / 2 - 8px))`,
@@ -90,10 +94,9 @@ export default function Carousel() {
         />
 
         {galleryItems.map((item) => (
-          <div
+          <figure
             key={item.id}
             ref={addToRefs}
-          
             className={`flex flex-col shrink-0 snap-center ${
               CARD_SIZES[item.type] || CARD_SIZES.narrow
             }`}
@@ -108,7 +111,7 @@ export default function Carousel() {
               />
             </div>
 
-            <div className="max-w-190 mt-6 mx-3.75 mb-0">
+            <figcaption className="max-w-190 mt-6 mx-3.75 mb-0">
               <p className="text-[14px] md:text-[17px] leading-snug tracking-[-0.022em]">
                 <span className="font-semibold text-foreground">
                   {item.title}
@@ -117,17 +120,18 @@ export default function Carousel() {
                   {item.description}
                 </span>
               </p>
-            </div>
-          </div>
+            </figcaption>
+          </figure>
         ))}
 
         <div
+          aria-hidden="true"
           className="shrink-0 w-0 md:w-auto"
           style={{
             width: `max(0px, calc((100% - ${CONTENT_MAX_WIDTH}px) / 2 - 8px))`,
           }}
         />
       </div>
-    </div>
+    </section>
   );
 }

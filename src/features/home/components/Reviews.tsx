@@ -1,4 +1,3 @@
-
 import { Star, Quote } from "lucide-react";
 import { useReviews } from "../hooks/useReviews";
 
@@ -40,8 +39,7 @@ const Reviews = () => {
       
       <div className="max-w-315 mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
         
-      
-        <div className="lg:col-span-4 flex flex-col gap-8">
+        <header className="lg:col-span-4 flex flex-col gap-8">
           <div className="space-y-3">
             <p className="text-sm font-semibold uppercase tracking-[0.22em] text-foreground/80">
               Testimonios
@@ -57,12 +55,10 @@ const Reviews = () => {
               vacaciones y viajes de trabajo.
             </p>
           </div>
-        </div>
+        </header>
 
- 
         <div className="lg:col-span-8 relative">
           
- 
           <div className="flex justify-between items-center mb-4 md:mb-6">
             <p className="text-sm text-muted">Historias recientes</p>
             <div className="hidden md:flex gap-3">
@@ -84,7 +80,6 @@ const Reviews = () => {
               </button>
             </div>
           </div>
-
 
           <div
             ref={trackRef}
@@ -125,9 +120,9 @@ const Reviews = () => {
                   </div>
                 </div>
 
-                <p className="text-[17px] text-foreground/90 leading-relaxed flex-1">
+                <blockquote className="text-[17px] text-foreground/90 leading-relaxed flex-1 m-0">
                   {review.quote}
-                </p>
+                </blockquote>
 
                 <div className="flex items-center gap-2 text-sm font-semibold text-foreground">
                   <div

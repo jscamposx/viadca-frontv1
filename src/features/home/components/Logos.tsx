@@ -19,9 +19,8 @@ const Logos = ({ logos }: LogosProps) => {
     <section
       id="socios"
       ref={sectionRef}
-      aria-labelledby="logos-heading"
+      aria-label="Galería de socios y colaboradores"
       className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 relative scroll-mt-32 bg-background overflow-hidden transition-colors duration-300"
-      role="region"
     >
       <div className="max-w-315 mx-auto">
         <div
@@ -32,9 +31,7 @@ const Logos = ({ logos }: LogosProps) => {
           onBlur={() => setPaused(false)}
           tabIndex={0}
           className="relative overflow-hidden"
-          aria-live="polite"
         >
-
           <div
             className="pointer-events-none absolute left-0 top-0 h-full w-16 sm:w-24 lg:w-32 bg-linear-to-r from-background to-transparent z-10"
             aria-hidden="true"
@@ -44,7 +41,6 @@ const Logos = ({ logos }: LogosProps) => {
             aria-hidden="true"
           />
 
-          {/* TRACK */}
           <div
             ref={trackRef}
             className="flex w-max items-center py-6 px-2 sm:px-4 will-change-transform select-none"
@@ -55,18 +51,13 @@ const Logos = ({ logos }: LogosProps) => {
                 key={`seq-${sIdx}`}
                 ref={sIdx === 0 ? firstSeqRef : undefined}
                 className="flex w-max shrink-0 items-center"
-                role="list"
               >
                 {seq.map((logo, idx) => (
                   <li
                     key={`logo-${sIdx}-${idx}`}
                     className="shrink-0 pr-16 sm:pr-20 lg:pr-24"
                   >
-                    <div
-                      className="flex items-center justify-center"
-                      role="img"
-                      aria-label={logo.alt}
-                    >
+                    <div className="flex items-center justify-center">
                       <img
                         src={logo.src}
                         alt={logo.alt}
@@ -74,7 +65,7 @@ const Logos = ({ logos }: LogosProps) => {
                         height={logo.height || undefined}
                         className={`${
                           logo.h || "h-16"
-                        } w-auto transition-all duration-300 ease-linear hover:scale-105   `}
+                        } w-auto transition-all duration-300 ease-linear hover:scale-105`}
                         decoding="async"
                         loading="lazy"
                         draggable="false"

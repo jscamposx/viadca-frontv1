@@ -1,6 +1,6 @@
 import HomePage from './features/home/pages/HomePage';
 import ThemeToggle from './ThemeToggle';
-
+import Footer from './features/common/components/Footer';
 function App() {
 
 
@@ -8,6 +8,7 @@ function App() {
     <>
       <main>
         <HomePage />
+        <Footer />
       </main>
       <ThemeToggle />
     </>

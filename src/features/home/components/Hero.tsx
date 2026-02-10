@@ -3,7 +3,6 @@ import { ArrowUpRight, Check } from "lucide-react";
 import { useHeroAnimation } from "../hooks/useHeroAnimation";
 import { HERO_CONTENT } from "../data/hero.data";
 
-
 const Hero = () => {
   const [activeTab, setActiveTab] = useState<string>("mexico");
   const [isTransitioning, setIsTransitioning] = useState(false);
@@ -36,7 +35,7 @@ const Hero = () => {
 
   return (
     <div className="bg-background w-full overflow-hidden pt-24 md:pt-32 transition-colors duration-300">
-      <section className="flex flex-col items-center justify-center w-full max-w-7xl mx-auto px-6 relative pb-4 md:pb-20">
+      <header className="flex flex-col items-center justify-center w-full max-w-7xl mx-auto px-6 relative pb-4 md:pb-20">
         <div className="w-full flex justify-center mb-4 md:mb-6">
           <span className="text-sm md:text-2xl font-bold uppercase text-brand tracking-wider text-center block">
             Agencia de viajes
@@ -75,25 +74,26 @@ const Hero = () => {
             </span>
           </button>
         </div>
-      </section>
+      </header>
 
       <div
         ref={container}
         className="w-full h-dvh flex flex-col lg:flex-row items-stretch overflow-hidden relative bg-background"
       >
-       <div
+        <div
           ref={leftContent}
-         className="bg-background z-30 flex flex-col justify-start lg:justify-center relative border-r border-surface/50 order-2 lg:order-1 h-[55%] lg:h-full overflow-hidden"
+          className="bg-background z-30 flex flex-col justify-start lg:justify-center relative border-r border-surface/50 order-2 lg:order-1 h-[55%] lg:h-full overflow-hidden"
         >
           <div
             ref={leftContentInner}
-           className="w-full max-w-xl md:max-w-3xl lg:max-w-xl mx-auto px-6 md:px-10 lg:px-12 flex flex-col justify-start lg:justify-center h-full pt-6 lg:pt-0 lg:py-0"
+            className="w-full max-w-xl md:max-w-3xl lg:max-w-xl mx-auto px-6 md:px-10 lg:px-12 flex flex-col justify-start lg:justify-center h-full pt-6 lg:pt-0 lg:py-0"
           >
-            <div className="flex flex-nowrap justify-start gap-2 mb-4 lg:mb-8 w-full">
+            <nav className="flex flex-nowrap justify-start gap-2 mb-4 lg:mb-8 w-full" aria-label="Categorías de viajes">
               {Object.keys(HERO_CONTENT).map((key) => (
                 <button
                   key={key}
                   onClick={() => handleTabChange(key)}
+                  aria-pressed={activeTab === key}
                   className={`items-center justify-center h-8 lg:h-10 px-3 lg:px-4 rounded-full border text-xs sm:text-sm font-semibold leading-none transition-all duration-200 cursor-pointer hover:shadow-sm whitespace-nowrap shrink-0
                     ${
                       activeTab === key
@@ -110,14 +110,15 @@ const Hero = () => {
                   {HERO_CONTENT[key].label}
                 </button>
               ))}
-            </div>
+            </nav>
 
-            <div className="w-full h-px bg-surface mb-4 lg:mb-8 hidden lg:block"></div>
+            <div className="w-full h-px bg-surface mb-4 lg:mb-8 hidden lg:block" role="separator"></div>
 
-            <div
+            <section
               className={`space-y-3 lg:space-y-6 transition-opacity duration-300 flex flex-col items-start ${
                 isTransitioning ? "opacity-50" : "opacity-100"
               }`}
+              aria-live="polite"
             >
               <h2 className="text-2xl sm:text-3xl lg:text-5xl font-bold text-foreground font-serif leading-tight text-left">
                 {currentContent.title}
@@ -136,7 +137,7 @@ const Hero = () => {
                       key={index}
                       className="flex items-center lg:items-start text-xs sm:text-base text-muted font-medium text-left"
                     >
-                      <div className="mr-2 p-0.5 bg-brand rounded-full shrink-0">
+                      <div className="mr-2 p-0.5 bg-brand rounded-full shrink-0" aria-hidden="true">
                         <Check className="w-2.5 h-2.5 lg:w-3 lg:h-3 text-white" />
                       </div>
                       {item}
@@ -151,10 +152,10 @@ const Hero = () => {
                   className="inline-flex items-center text-sm lg:text-lg font-bold text-brand hover:text-foreground hover:underline group transition-all"
                 >
                   Ver paquetes
-                  <ArrowUpRight className="ml-1 w-3 h-3 lg:w-5 lg:h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                  <ArrowUpRight className="ml-1 w-3 h-3 lg:w-5 lg:h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" aria-hidden="true" />
                 </a>
               </div>
-            </div>
+            </section>
           </div>
         </div>
 
@@ -176,6 +177,7 @@ const Hero = () => {
               className={`w-full h-full object-cover absolute inset-0 z-0 transition-opacity duration-500 ${
                 isTransitioning ? "opacity-0" : "opacity-100"
               }`}
+              aria-hidden="true"
             >
               {currentContent.videoWebm && (
                 <source src={currentContent.videoWebm} type="video/webm" />
@@ -185,9 +187,8 @@ const Hero = () => {
               )}
               <track
                 kind="captions"
-       
                 srcLang="es"
-                label="Espanol"
+                label="Español"
                 default
               />
             </video>
@@ -196,6 +197,7 @@ const Hero = () => {
               ref={overlay}
               className="absolute inset-0 z-10 pointer-events-none opacity-0 bg-black/40"
               style={{ backdropFilter: "blur(0px)" }}
+              aria-hidden="true"
             ></div>
 
             <div
