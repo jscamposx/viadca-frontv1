@@ -20,7 +20,7 @@ const TravelInsights = () => {
         </header>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-x-12 xl:gap-x-24 items-start">
-          <div className="w-full lg:col-span-5 flex flex-col pt-0 lg:pt-4" role="tablist" aria-orientation="vertical">
+          <div className="w-full lg:col-span-5 flex flex-col pt-0 lg:pt-4">
             {TRAVEL_INSIGHTS_DATA.map((item) => {
               const isOpen = activeId === item.id;
 
@@ -32,8 +32,7 @@ const TravelInsights = () => {
                   <button
                     onClick={() => setActiveId(item.id)}
                     className="w-full py-6 md:py-8 flex items-start justify-between group text-left focus:outline-none cursor-pointer"
-                    role="tab"
-                    aria-selected={isOpen}
+                    aria-expanded={isOpen}
                     aria-controls={`panel-${item.id}`}
                     id={`tab-${item.id}`}
                   >
@@ -59,7 +58,6 @@ const TravelInsights = () => {
 
                   <div 
                     id={`panel-${item.id}`}
-                    role="tabpanel"
                     aria-labelledby={`tab-${item.id}`}
                     hidden={!isOpen}
                     className={`grid transition-[grid-template-rows] duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)] ${

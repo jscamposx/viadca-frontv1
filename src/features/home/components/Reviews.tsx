@@ -125,12 +125,13 @@ const Reviews = () => {
                 </blockquote>
 
                 <div className="flex items-center gap-2 text-sm font-semibold text-foreground">
-                  <div
+                  <span
                     className="flex items-center gap-1"
+                    role="img"
                     aria-label={`Calificación ${review.score} de 5`}
                   >
                     {renderStars(review.score)}
-                  </div>
+                  </span>
                   <span className="ml-1 text-foreground">{review.score}</span>
                 </div>
               </article>
