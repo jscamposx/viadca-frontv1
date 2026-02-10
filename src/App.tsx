@@ -6,7 +6,9 @@ function App() {
 
   return (
     <>
-      <HomePage />
+      <main>
+        <HomePage />
+      </main>
       <ThemeToggle />
     </>
   )

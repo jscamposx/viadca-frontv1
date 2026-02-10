@@ -34,6 +34,7 @@ const FeatureModal = ({ feature, onClose }: FeatureModalProps) => {
           <button
             onClick={handleClose}
             className="p-3 hover:bg-surface rounded-full transition-colors -mr-2 -mt-2 text-foreground"
+            aria-label="Cerrar"
           >
             <X className="w-8 h-8" />
           </button>

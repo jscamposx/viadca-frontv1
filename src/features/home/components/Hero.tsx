@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { ArrowUpRight, Check } from "lucide-react";
 import { useHeroAnimation } from "../hooks/useHeroAnimation";
 import { HERO_CONTENT } from "../data/hero.data";
+import heroCaptionsEs from "../assets/videos/hero-captions-es.vtt";
 
 const Hero = () => {
   const [activeTab, setActiveTab] = useState<string>("mexico");
@@ -182,6 +183,13 @@ const Hero = () => {
               {currentContent.videoMp4 && (
                 <source src={currentContent.videoMp4} type="video/mp4" />
               )}
+              <track
+                kind="captions"
+                src={heroCaptionsEs}
+                srcLang="es"
+                label="Espanol"
+                default
+              />
             </video>
 
             <div

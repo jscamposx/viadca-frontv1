@@ -33,6 +33,7 @@ export default function Carousel() {
           <button
             onClick={() => scroll("left")}
             disabled={!canScrollLeft}
+            aria-label="Ver anteriores"
             className={`
               w-9 h-9 rounded-full flex items-center justify-center 
               transition-all duration-200 disabled:opacity-30 disabled:cursor-default
@@ -53,6 +54,7 @@ export default function Carousel() {
           <button
             onClick={() => scroll("right")}
             disabled={!canScrollRight}
+            aria-label="Ver siguientes"
             className={`
               w-9 h-9 rounded-full flex items-center justify-center 
               transition-all duration-200 disabled:opacity-30 disabled:cursor-default
