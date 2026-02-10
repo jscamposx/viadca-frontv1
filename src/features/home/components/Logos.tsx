@@ -1,5 +1,5 @@
 import { useLogosCarousel } from "../hooks/useLogosCarousel";
-import { LogoItem } from "../data/logos.data";
+import type { LogoItem } from "../data/logos.data";
 
 interface LogosProps {
   logos?: LogoItem[];
