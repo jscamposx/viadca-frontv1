@@ -28,7 +28,7 @@ export default function Carousel() {
             {CAROUSEL_UI.title}
           </h2>
 
-          <div className="hidden md:flex gap-3 min-w-[88px] justify-end" role="group" aria-label={CAROUSEL_UI.controlsLabel}>
+          <div className="hidden md:flex gap-3 min-w-22 justify-end" role="group" aria-label={CAROUSEL_UI.controlsLabel}>
             <button
               type="button"
               onClick={() => scroll("left")}
@@ -78,7 +78,7 @@ export default function Carousel() {
         <ul
           ref={scrollRef}
           onScroll={checkScroll}
-          className="carousel-track py-8 flex w-full overflow-x-auto overflow-y-visible snap-x snap-mandatory gap-6 md:gap-8 scrollbar-hide"
+          className="carousel-track py-12 flex w-full overflow-x-auto overflow-y-visible snap-x snap-mandatory gap-6 md:gap-8 scrollbar-hide"
           style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
         >
           {galleryItems.map((item) => (

@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect, useLayoutEffect } from "react";
+import { useRef, useState,  useLayoutEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -10,8 +10,16 @@ export const useCarousel = () => {
   const cardsRef = useRef<HTMLElement[]>([]);
 
   const [canScrollLeft, setCanScrollLeft] = useState(false);
-  const [canScrollRight, setCanScrollRight] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
 
+
+  const checkScroll = () => {
+    if (!scrollRef.current) return;
+    const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+    const maxScroll = Math.max(scrollWidth - clientWidth, 0);
+    setCanScrollLeft(scrollLeft > 5);
+    setCanScrollRight(scrollLeft < maxScroll - 5);
+  };
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
@@ -50,14 +58,6 @@ export const useCarousel = () => {
       ctx.revert();
     };
   }, []);
-
-  const checkScroll = () => {
-    if (!scrollRef.current) return;
-    const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
-    const maxScroll = Math.max(scrollWidth - clientWidth, 0);
-    setCanScrollLeft(scrollLeft > 1);
-    setCanScrollRight(scrollLeft < maxScroll - 1);
-  };
 
   const scroll = (direction: "left" | "right") => {
     if (!scrollRef.current) return;
