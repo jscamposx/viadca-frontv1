@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { useLogosCarousel } from "../hooks/useLogosCarousel";
 import { LOGOS_UI, type LogoItem } from "../data/logos.data";
 
@@ -6,6 +7,11 @@ interface LogosProps {
 }
 
 const Logos = ({ logos }: LogosProps) => {
+  const [themeKey, setThemeKey] = useState(() => {
+    if (typeof document === "undefined") return "light";
+    return document.documentElement.classList.contains("dark") ? "dark" : "light";
+  });
+
   const {
     sectionRef,
     containerRef,
@@ -14,6 +20,19 @@ const Logos = ({ logos }: LogosProps) => {
     sequences,
     setPaused,
   } = useLogosCarousel(logos);
+
+  useEffect(() => {
+    const root = document.documentElement;
+    const updateThemeKey = () => {
+      setThemeKey(root.classList.contains("dark") ? "dark" : "light");
+    };
+
+    updateThemeKey();
+    const observer = new MutationObserver(updateThemeKey);
+    observer.observe(root, { attributes: true, attributeFilter: ["class"] });
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <section
@@ -24,6 +43,7 @@ const Logos = ({ logos }: LogosProps) => {
     >
       <div className="max-w-315 mx-auto">
         <div
+          key={themeKey}
           ref={containerRef}
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => setPaused(false)}
@@ -65,7 +85,11 @@ const Logos = ({ logos }: LogosProps) => {
                         height={logo.height || undefined}
                         className={`${
                           logo.h || "h-16"
-                        } w-auto transition-all duration-300 ease-linear hover:scale-105`}
+                        } w-auto opacity-100 hover:scale-105`}
+                        style={{
+                          filter: "var(--logo-filter)",
+                          transition: "opacity 0.3s ease-linear, transform 0.3s ease-linear",
+                        }}
                         decoding="async"
                         loading="lazy"
                         draggable="false"

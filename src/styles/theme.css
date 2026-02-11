@@ -18,6 +18,7 @@
   --muted: #64748b;
   --brand: #00509d;
   --brand-foreground: #ffffff;
+  --logo-filter: invert(0) brightness(0);
 }
 
 .dark {
@@ -27,4 +28,5 @@
   --muted: #a1a1aa;
   --brand: #38bdf8;
   --brand-foreground: #000000;
+  --logo-filter: invert(1) brightness(1);
 }

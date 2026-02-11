@@ -52,7 +52,7 @@ const FeatureModal = ({ feature, onClose }: FeatureModalProps) => {
             {feature.modalDetails.map((item, idx) => (
               <section
                 key={idx}
-                className="flex flex-col gap-4 pt-8 border-t border-gray-200 dark:border-white/20"
+                className="flex flex-col gap-4 pt-8"
               >
                 <h3 className="text-lg font-bold text-foreground leading-snug">
                   {item.headline}
@@ -98,7 +98,7 @@ const Features = () => {
               <article key={feature.id} className="feature-card group">
                 <div
                   className={`grid grid-cols-1 md:grid-cols-12 items-start gap-y-8 md:gap-x-20 py-14 ${
-                    index !== 0 ? "border-t border-gray-200 dark:border-white/20" : ""
+                    index !== 0 ? "border-t border-gray-100 dark:border-white/5" : ""
                   }`}
                 >
                   <div className="col-span-1 md:col-span-5 w-full">

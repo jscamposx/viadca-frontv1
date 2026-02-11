@@ -65,7 +65,7 @@ const Reviews = () => {
               <button
                 type="button"
                 onClick={() => scroll("left")}
-                className="w-10 h-10 rounded-full border border-foreground/20 bg-background text-foreground hover:bg-foreground hover:text-background hover:shadow-sm transition flex items-center justify-center"
+                className="w-10 h-10 rounded-full border border-foreground/20 bg-background text-foreground hover:bg-foreground hover:text-background hover:shadow-sm transition cursor-pointer flex items-center justify-center"
                 aria-label="Ver anteriores"
               >
                 ←
@@ -73,7 +73,7 @@ const Reviews = () => {
               <button
                 type="button"
                 onClick={() => scroll("right")}
-                className="w-10 h-10 rounded-full border border-foreground/20 bg-background text-foreground hover:bg-foreground hover:text-background hover:shadow-sm transition flex items-center justify-center"
+                className="w-10 h-10 rounded-full border border-foreground/20 bg-background text-foreground hover:bg-foreground hover:text-background hover:shadow-sm transition cursor-pointer flex items-center justify-center"
                 aria-label="Ver siguientes"
               >
                 →
@@ -83,7 +83,7 @@ const Reviews = () => {
 
           <div
             ref={trackRef}
-            className="review-track flex gap-6 lg:gap-8 overflow-x-auto pb-4 md:pb-6 snap-x snap-mandatory scroll-smooth"
+            className="review-track flex gap-6 lg:gap-8 overflow-x-auto overflow-y-hidden pb-4 md:pb-6 snap-x snap-mandatory scroll-smooth"
           >
             {reviews.map((review) => (
               <article
@@ -120,7 +120,7 @@ const Reviews = () => {
                   </div>
                 </div>
 
-                <blockquote className="text-[17px] text-foreground/90 leading-relaxed flex-1 m-0">
+                <blockquote className="text-[17px] text-foreground/90 leading-relaxed flex-1 m-0 line-clamp-4">
                   {review.quote}
                 </blockquote>
 

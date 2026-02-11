@@ -9,10 +9,10 @@ const ContactCTA = () => {
     >
       <div className="max-w-315 mx-auto flex flex-col md:flex-row items-start md:items-end justify-between gap-12">
         
-        <div className="max-w-4xl">
+        <div className="max-w-4xl text-center md:text-left">
           <h2 
             id="contact-heading"
-            className="text-6xl md:text-[100px] font-serif font-medium text-foreground leading-[0.9] tracking-tight mb-4 transition-colors duration-300"
+            className="text-5xl md:text-[100px] font-serif font-medium text-foreground leading-[0.9] tracking-tight mb-8 transition-colors duration-300"
           >
             {CONTACT_CONTENT.title}
           </h2>

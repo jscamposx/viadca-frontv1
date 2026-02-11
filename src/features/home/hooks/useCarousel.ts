@@ -8,17 +8,26 @@ export const useCarousel = () => {
   const scrollRef = useRef<HTMLUListElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<HTMLElement[]>([]);
+  const rafIdRef = useRef<number | null>(null);
 
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
 
 
   const checkScroll = () => {
-    if (!scrollRef.current) return;
-    const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
-    const maxScroll = Math.max(scrollWidth - clientWidth, 0);
-    setCanScrollLeft(scrollLeft > 5);
-    setCanScrollRight(scrollLeft < maxScroll - 5);
+    if (rafIdRef.current !== null) {
+      cancelAnimationFrame(rafIdRef.current);
+    }
+
+    rafIdRef.current = requestAnimationFrame(() => {
+      if (!scrollRef.current) return;
+      const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+      const maxScroll = Math.max(scrollWidth - clientWidth, 0);
+      const normalizedMax = Math.ceil(maxScroll);
+      setCanScrollLeft(scrollLeft > 1);
+      setCanScrollRight(scrollLeft < normalizedMax - 1);
+      rafIdRef.current = null;
+    });
   };
 
   useLayoutEffect(() => {
@@ -54,6 +63,9 @@ export const useCarousel = () => {
     window.addEventListener("resize", checkScroll);
 
     return () => {
+      if (rafIdRef.current !== null) {
+        cancelAnimationFrame(rafIdRef.current);
+      }
       window.removeEventListener("resize", checkScroll);
       ctx.revert();
     };

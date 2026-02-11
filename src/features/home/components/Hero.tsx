@@ -36,7 +36,7 @@ const Hero = () => {
 
   return (
     <div className="bg-background w-full overflow-hidden pt-24 md:pt-32 transition-colors duration-300">
-      <header className="flex flex-col items-center justify-center w-full max-w-7xl mx-auto px-6 relative pb-4 md:pb-20">
+      <header className="flex flex-col items-center justify-center w-full max-w-7xl mx-auto px-6 relative pb-8 md:pb-20">
         <div className="w-full flex justify-center mb-4 md:mb-6">
           <span className="text-sm md:text-2xl font-bold uppercase text-brand tracking-wider text-center block">
             {HERO_UI.eyebrow}

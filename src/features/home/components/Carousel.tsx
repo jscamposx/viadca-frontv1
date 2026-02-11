@@ -20,11 +20,11 @@ export default function Carousel() {
     <section
       ref={containerRef}
       aria-label={CAROUSEL_UI.ariaLabel}
-      className="bg-background w-full min-h-[95vh] flex flex-col justify-center font-sans text-foreground py-12 md:py-0 overflow-x-hidden overflow-y-visible transition-colors duration-300"
+      className="bg-background w-full min-h-[95vh] flex flex-col justify-center font-sans text-foreground py-12 md:py-0 overflow-y-visible transition-colors duration-300"
     >
       <div className="max-w-315 mx-auto ">
         <header className="mb-6 md:mb-10 flex items-end justify-between">
-          <h2 className="text-[24px] leading-tight md:leading-tight font-semibold tracking-[-0.015em] md:text-[32px] text-foreground">
+          <h2 className="text-[24px] leading-tight md:leading-tight font-semibold tracking-[-0.015em] md:text-[32px] text-foreground text-center md:text-left">
             {CAROUSEL_UI.title}
           </h2>
 
@@ -78,7 +78,7 @@ export default function Carousel() {
         <ul
           ref={scrollRef}
           onScroll={checkScroll}
-          className="carousel-track py-12 flex w-full overflow-x-auto overflow-y-visible snap-x snap-mandatory gap-6 md:gap-8 scrollbar-hide"
+          className="carousel-track py-12 flex w-full overflow-x-auto overflow-y-visible snap-x snap-proximity md:snap-mandatory gap-6 md:gap-8 scrollbar-hide touch-pan-x scroll-pl-6"
           style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
         >
           {galleryItems.map((item) => (
@@ -90,7 +90,7 @@ export default function Carousel() {
               } opacity-0`}
             >
               <figure className="carousel-card">
-                <div className="carousel-card-media w-full h-120 md:h-170 rounded-3xl overflow-hidden bg-surface relative group cursor-pointer border border-border/10 dark:border-white/10">
+                <div className="carousel-card-media w-full h-120 md:h-170 rounded-3xl overflow-hidden bg-surface relative group cursor-pointer border border-border/10 dark:border-transparent">
                   <img
                     src={item.imgSrc}
                     alt={item.title}
