@@ -10,8 +10,6 @@ export default function Carousel() {
     containerRef,
     scrollRef,
     addToRefs,
-    canScrollLeft,
-    canScrollRight,
     scroll,
     checkScroll,
   } = useCarousel();
@@ -32,11 +30,10 @@ export default function Carousel() {
             <button
               type="button"
               onClick={() => scroll("left")}
-              disabled={!canScrollLeft}
               aria-label={CAROUSEL_UI.controls.prevLabel}
               className={`
                 w-9 h-9 rounded-full flex items-center justify-center 
-                transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed
+                transition-all duration-200
                 bg-gray-200 hover:bg-gray-300 text-gray-900 
                 dark:bg-[#333336] dark:hover:bg-[#464649] dark:text-[#f5f5f7]
               `}
@@ -54,11 +51,10 @@ export default function Carousel() {
             <button
               type="button"
               onClick={() => scroll("right")}
-              disabled={!canScrollRight}
               aria-label={CAROUSEL_UI.controls.nextLabel}
               className={`
                 w-9 h-9 rounded-full flex items-center justify-center 
-                transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed
+                transition-all duration-200
                 bg-gray-200 hover:bg-gray-300 text-gray-900 
                 dark:bg-[#333336] dark:hover:bg-[#464649] dark:text-[#f5f5f7]
               `}

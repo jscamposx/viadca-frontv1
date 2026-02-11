@@ -1,4 +1,4 @@
-import { useRef, useState,  useLayoutEffect } from "react";
+import { useRef, useLayoutEffect, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -8,26 +8,12 @@ export const useCarousel = () => {
   const scrollRef = useRef<HTMLUListElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<HTMLElement[]>([]);
-  const rafIdRef = useRef<number | null>(null);
 
-  const [canScrollLeft, setCanScrollLeft] = useState(false);
-  const [canScrollRight, setCanScrollRight] = useState(true);
-
+  const canScrollLeft = true;
+  const canScrollRight = true;
 
   const checkScroll = () => {
-    if (rafIdRef.current !== null) {
-      cancelAnimationFrame(rafIdRef.current);
-    }
-
-    rafIdRef.current = requestAnimationFrame(() => {
-      if (!scrollRef.current) return;
-      const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
-      const maxScroll = Math.max(scrollWidth - clientWidth, 0);
-      const normalizedMax = Math.ceil(maxScroll);
-      setCanScrollLeft(scrollLeft > 1);
-      setCanScrollRight(scrollLeft < normalizedMax - 1);
-      rafIdRef.current = null;
-    });
+    return;
   };
 
   useLayoutEffect(() => {
@@ -59,16 +45,21 @@ export const useCarousel = () => {
       );
     }, containerRef);
 
-    checkScroll();
-    window.addEventListener("resize", checkScroll);
-
     return () => {
-      if (rafIdRef.current !== null) {
-        cancelAnimationFrame(rafIdRef.current);
-      }
-      window.removeEventListener("resize", checkScroll);
       ctx.revert();
     };
+  }, []);
+
+  useEffect(() => {
+    const root = document.documentElement;
+    const handleThemeChange = () => {
+      ScrollTrigger.refresh();
+    };
+
+    const observer = new MutationObserver(handleThemeChange);
+    observer.observe(root, { attributes: true, attributeFilter: ["class"] });
+
+    return () => observer.disconnect();
   }, []);
 
   const scroll = (direction: "left" | "right") => {
@@ -97,8 +88,8 @@ export const useCarousel = () => {
 
     let nextIndex = direction === "right" ? closestIndex + 1 : closestIndex - 1;
 
-    if (nextIndex < 0) nextIndex = 0;
-    if (nextIndex >= cards.length) nextIndex = cards.length - 1;
+    if (nextIndex < 0) nextIndex = cards.length - 1;
+    if (nextIndex >= cards.length) nextIndex = 0;
 
     const targetCard = cards[nextIndex];
     const target = targetCard ? targetCard.offsetLeft - paddingLeft : container.scrollLeft;
