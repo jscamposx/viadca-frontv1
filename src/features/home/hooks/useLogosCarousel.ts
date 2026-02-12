@@ -70,8 +70,9 @@ export const useLogosCarousel = (logosProp?: LogoItem[]) => {
   useEffect(() => {
     if (!trackRef.current || seqWidth <= 0) return;
 
-  
-    const speed = 50; 
+    const isMobile = window.innerWidth < 768;
+    const isTablet = window.innerWidth >= 768 && window.innerWidth < 1024;
+    const speed = isMobile ? 100 : isTablet ? 80 : 50; 
     const duration = seqWidth / speed;
 
     if (marqueeTween.current) marqueeTween.current.kill();

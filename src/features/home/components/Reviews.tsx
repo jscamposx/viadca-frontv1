@@ -88,7 +88,7 @@ const Reviews = () => {
             {reviews.map((review) => (
               <article
                 key={review.id}
-                className="review-card flex-none w-[88vw] sm:w-90 lg:w-[min(29rem,calc(50%-1rem))] snap-start relative rounded-3xl border border-border/10 bg-surface shadow-[0_25px_80px_-40px_rgba(0,0,0,0.2)] dark:shadow-none dark:border-white/10 p-7 md:p-8 flex flex-col gap-6"
+                className="review-card flex-none w-[88vw] sm:w-90 lg:w-[min(29rem,calc(50%-1rem))] snap-start relative rounded-3xl border border-foreground/15 bg-surface shadow-[0_25px_80px_-40px_rgba(0,0,0,0.2)] dark:shadow-none dark:border-foreground/10 p-7 md:p-8 flex flex-col gap-6 z-10"
               >
                 <Quote
                   className="w-6 h-6 fill-foreground text-foreground absolute top-6 right-6 opacity-10"
