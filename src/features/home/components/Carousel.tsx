@@ -65,7 +65,7 @@ export default function Carousel() {
           style={{ width: "max(0px, calc((100% - 1260px) / 2 - 8px))" }}
         />
 
-        {galleryItems.slice(0, 4).map((item, index) => (
+        {galleryItems.slice(0, 4).map((item) => (
           <div
             key={item.id}
             ref={(el) => addToRefs(el)}
