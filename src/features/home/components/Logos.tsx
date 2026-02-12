@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { useLogosCarousel } from "../hooks/useLogosCarousel";
 import { LOGOS_UI, type LogoItem } from "../data/logos.data";
 
@@ -7,11 +6,6 @@ interface LogosProps {
 }
 
 const Logos = ({ logos }: LogosProps) => {
-  const [themeKey, setThemeKey] = useState(() => {
-    if (typeof document === "undefined") return "light";
-    return document.documentElement.classList.contains("dark") ? "dark" : "light";
-  });
-
   const {
     sectionRef,
     containerRef,
@@ -20,19 +14,6 @@ const Logos = ({ logos }: LogosProps) => {
     sequences,
     setPaused,
   } = useLogosCarousel(logos);
-
-  useEffect(() => {
-    const root = document.documentElement;
-    const updateThemeKey = () => {
-      setThemeKey(root.classList.contains("dark") ? "dark" : "light");
-    };
-
-    updateThemeKey();
-    const observer = new MutationObserver(updateThemeKey);
-    observer.observe(root, { attributes: true, attributeFilter: ["class"] });
-
-    return () => observer.disconnect();
-  }, []);
 
   return (
     <section
@@ -43,7 +24,6 @@ const Logos = ({ logos }: LogosProps) => {
     >
       <div className="max-w-315 mx-auto">
         <div
-          key={themeKey}
           ref={containerRef}
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => setPaused(false)}

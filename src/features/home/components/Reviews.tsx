@@ -40,24 +40,24 @@ const Reviews = () => {
       
       <div className="max-w-315 mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
         
-        <header className="lg:col-span-4 flex flex-col gap-8">
+        <header className="lg:col-span-3 flex flex-col gap-8">
           <div className="space-y-3">
             <p className="text-sm font-semibold uppercase tracking-[0.22em] text-foreground/80">
               {REVIEWS_UI.eyebrow}
             </p>
             <h2
               id="reviews-heading"
-              className="text-4xl md:text-[56px] leading-[1.05] tracking-tight font-serif font-medium text-foreground"
+              className="text-3xl md:text-[46px] lg:text-[38px] xl:text-[40px] leading-[1.1] tracking-tight font-serif font-medium text-foreground text-balance max-w-xl lg:max-w-md"
             >
               {REVIEWS_UI.heading}
             </h2>
-            <p className="text-base md:text-lg text-muted leading-relaxed max-w-xl">
+            <p className="text-base md:text-[17px] lg:text-base text-muted/90 leading-relaxed lg:leading-7 text-pretty max-w-xl lg:max-w-sm">
               {REVIEWS_UI.description}
             </p>
           </div>
         </header>
 
-        <div className="lg:col-span-8 relative">
+        <div className="lg:col-span-9 relative">
           
           <div className="flex justify-between items-center mb-4 md:mb-6">
             <p className="text-sm text-muted">{REVIEWS_UI.recentLabel}</p>
@@ -83,12 +83,12 @@ const Reviews = () => {
 
           <div
             ref={trackRef}
-            className="review-track flex gap-6 lg:gap-8 overflow-x-auto overflow-y-hidden pb-4 md:pb-6 snap-x snap-mandatory scroll-smooth"
+            className="review-track flex gap-6 lg:gap-8 overflow-x-auto overflow-y-visible pb-4 md:pb-6 snap-x snap-mandatory scroll-smooth pr-1 lg:pr-2"
           >
             {reviews.map((review) => (
               <article
                 key={review.id}
-                className="review-card flex-none w-[88vw] sm:w-90 lg:w-105 snap-start relative rounded-3xl border border-border/10 bg-surface shadow-[0_25px_80px_-40px_rgba(0,0,0,0.2)] dark:shadow-none dark:border-white/10 p-7 md:p-8 flex flex-col gap-6"
+                className="review-card flex-none w-[88vw] sm:w-90 lg:w-[min(29rem,calc(50%-1rem))] snap-start relative rounded-3xl border border-border/10 bg-surface shadow-[0_25px_80px_-40px_rgba(0,0,0,0.2)] dark:shadow-none dark:border-white/10 p-7 md:p-8 flex flex-col gap-6"
               >
                 <Quote
                   className="w-6 h-6 fill-foreground text-foreground absolute top-6 right-6 opacity-10"

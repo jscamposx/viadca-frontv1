@@ -10,9 +10,9 @@ export interface GalleryItem {
 }
 
 export const CARD_SIZES: Record<CardSize, string> = {
-  narrow: "w-[88vw] sm:w-[352px] md:w-[420px]",
-  large: "w-[88vw] sm:w-[420px] md:w-[620px]",
-  wide: "w-[88vw] sm:w-[520px] md:w-[780px]",
+  narrow: "w-[352px] md:w-[400px]",
+  large: "w-[352px] md:w-[620px]",
+  wide: "w-[352px] md:w-[832px]",
 };
 
 export const CAROUSEL_UI = {

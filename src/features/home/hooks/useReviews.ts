@@ -39,9 +39,16 @@ export const useReviews = () => {
   const scroll = (direction: "left" | "right") => {
     const node = trackRef.current;
     if (!node) return;
-    const cardWidth = 360;
-    const gap = 24;
-    const amount = direction === "left" ? -(cardWidth + gap) : cardWidth + gap;
+
+    const cards = node.querySelectorAll<HTMLElement>(".review-card");
+    if (!cards.length) return;
+
+    const styles = window.getComputedStyle(node);
+    const gap = parseFloat(styles.columnGap || styles.gap || "0");
+    const cardWidth = cards[0].getBoundingClientRect().width;
+    const step = cardWidth + gap;
+    const amount = direction === "left" ? -step : step;
+
     node.scrollBy({ left: amount, behavior: "smooth" });
   };
 

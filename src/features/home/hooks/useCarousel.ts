@@ -1,45 +1,36 @@
-import { useRef, useLayoutEffect, useEffect } from "react";
+import { useRef, useEffect, useState, useLayoutEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export const useCarousel = () => {
-  const scrollRef = useRef<HTMLUListElement>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<HTMLElement[]>([]);
 
-  const canScrollLeft = true;
-  const canScrollRight = true;
-
-  const checkScroll = () => {
-    return;
-  };
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.set(cardsRef.current, { autoAlpha: 0, y: 40, scale: 0.98 });
       gsap.fromTo(
         cardsRef.current,
         {
-          y: 40,
-          autoAlpha: 0,
-          scale: 0.98,
+          y: 100,
+          opacity: 0,
         },
         {
           y: 0,
-          autoAlpha: 1,
-          scale: 1,
-          duration: 0.9,
+          opacity: 1,
+          duration: 1,
           ease: "power3.out",
-          stagger: 0.1,
-          immediateRender: true,
+          stagger: 0.12,
           scrollTrigger: {
             trigger: containerRef.current,
             start: "top 60%",
             end: "bottom 40%",
             toggleActions: "play reverse play reverse",
-            invalidateOnRefresh: false,
           },
         }
       );
@@ -50,58 +41,36 @@ export const useCarousel = () => {
     };
   }, []);
 
+  const checkScroll = () => {
+    if (!scrollRef.current) return;
+    const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+    setCanScrollLeft(scrollLeft > 2);
+    setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 10);
+  };
+
   useEffect(() => {
-    const root = document.documentElement;
-    const handleThemeChange = () => {
-      ScrollTrigger.refresh();
-    };
-
-    const observer = new MutationObserver(handleThemeChange);
-    observer.observe(root, { attributes: true, attributeFilter: ["class"] });
-
-    return () => observer.disconnect();
+    checkScroll();
+    window.addEventListener("resize", checkScroll);
+    return () => window.removeEventListener("resize", checkScroll);
   }, []);
 
   const scroll = (direction: "left" | "right") => {
     if (!scrollRef.current) return;
+    const isMobile = window.innerWidth < 768;
+    
+    const scrollAmount = isMobile ? 352 + 16 : 650 + 32;
 
-    const container = scrollRef.current;
-    const styles = getComputedStyle(container);
-    const paddingLeft = parseFloat(styles.paddingLeft || "0");
-    const cards = cardsRef.current;
-
-    if (cards.length === 0) return;
-
-    const currentLeft = container.scrollLeft + paddingLeft;
-    let closestIndex = 0;
-    let minDistance = Infinity;
-
-    cards.forEach((card, index) => {
-      if (!card) return;
-      const distance = Math.abs(currentLeft - card.offsetLeft);
-
-      if (distance < minDistance) {
-        minDistance = distance;
-        closestIndex = index;
+    if (direction === "left") {
+      const currentScroll = scrollRef.current.scrollLeft;
+      if (currentScroll - scrollAmount < 200) {
+        scrollRef.current.scrollTo({ left: 0, behavior: "smooth" });
+      } else {
+        scrollRef.current.scrollBy({ left: -scrollAmount, behavior: "smooth" });
       }
-    });
-
-    let nextIndex = direction === "right" ? closestIndex + 1 : closestIndex - 1;
-
-    if (nextIndex < 0) nextIndex = cards.length - 1;
-    if (nextIndex >= cards.length) nextIndex = 0;
-
-    const targetCard = cards[nextIndex];
-    const target = targetCard ? targetCard.offsetLeft - paddingLeft : container.scrollLeft;
-    const maxScroll = container.scrollWidth - container.clientWidth;
-    const clampedScroll = Math.min(Math.max(target, 0), maxScroll);
-
-    container.scrollTo({
-      left: clampedScroll,
-      behavior: "smooth",
-    });
-
-    setTimeout(checkScroll, 350);
+    } else {
+      scrollRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
+    }
+    setTimeout(checkScroll, 600);
   };
 
   const addToRefs = (el: HTMLElement | null) => {
