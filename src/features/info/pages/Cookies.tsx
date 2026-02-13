@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { 
   Cookie, 
   Layers, 
@@ -8,11 +7,10 @@ import {
   Shield, 
   ToggleRight, 
   Info, 
-  Check, 
-  ArrowLeft
+  Check
 } from 'lucide-react';
 import { COOKIES_HERO, COOKIES_SECTIONS } from "../data/cookies.data";
-import SupportCTA from "../../common/components/SupportCTA";
+import SupportCTA from "../components/SupportCTA";
 
 const InfoCard = ({ 
   icon: Icon, 
@@ -43,10 +41,8 @@ const InfoCard = ({
 const Cookies = () => {
   return (
     <div className="flex flex-col min-h-screen bg-background font-sans transition-colors duration-300">
-      
       <section className="relative pt-32 pb-16 md:pt-40 md:pb-24 overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,var(--tw-gradient-stops))] from-brand/10 via-transparent to-transparent pointer-events-none" />
-        
         <div className="relative max-w-315 mx-auto px-6 text-center z-10">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface border border-muted/20 text-brand text-xs font-bold uppercase tracking-wider mb-8 backdrop-blur-md shadow-sm">
             <Cookie className="w-3.5 h-3.5" />
@@ -164,16 +160,6 @@ const Cookies = () => {
 
         <div className="pt-12 md:pt-16 border-t border-surface">
           <SupportCTA />
-        </div>
-
-        <div className="text-center pt-8 pb-4">
-          <Link 
-            to="/" 
-            className="group inline-flex items-center gap-2 text-sm font-bold text-muted hover:text-brand transition-colors py-2 px-4 rounded-xl hover:bg-surface"
-          >
-            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform duration-300" />
-            Volver al inicio
-          </Link>
         </div>
 
       </main>
