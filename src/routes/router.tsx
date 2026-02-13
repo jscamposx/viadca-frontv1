@@ -1,7 +1,7 @@
 import { createBrowserRouter, Navigate } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
-import { PATHS } from '@/features/config/paths';
-import { PublicLayout } from '@/features/layouts/PublicLayout';
+import { PATHS } from '@/config/paths';
+import { PublicLayout } from '@/layouts/PublicLayout';
 
 const PageLoader = () => (
   <div className="flex min-h-[50vh] items-center justify-center">
