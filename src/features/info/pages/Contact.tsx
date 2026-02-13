@@ -20,7 +20,7 @@ import {
   CONTACT_HOURS, 
   SOCIAL_LINKS,
   CONTACT_CTA 
-} from "../data/contact_page.data";
+} from "../data/contact.data";
 
 const Contact = () => {
   
