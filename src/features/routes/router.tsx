@@ -1,26 +1,34 @@
-import { createBrowserRouter } from "react-router-dom";
-import { lazy, Suspense } from "react";
-import { PATHS } from "@/config/paths";
-import { PublicLayout } from "@/layouts/PublicLayout";
+import { createBrowserRouter, Navigate } from 'react-router-dom';
+import { lazy, Suspense } from 'react';
+import { PATHS } from '@/features/config/paths';
+import { PublicLayout } from '@/features/layouts/PublicLayout';
 
 const PageLoader = () => (
-  <div className="flex items-center justify-center min-h-[60vh]">
-    <div className="animate-pulse text-muted">Cargando...</div>
+  <div className="flex min-h-[50vh] items-center justify-center">
+    <div className="h-8 w-8 animate-spin rounded-full border-4 border-muted border-t-foreground" />
   </div>
 );
 
-const Loadable = (Component: React.ComponentType) => (props: any) => (
+const Loadable = (Component: React.ComponentType) => (props: object) => (
   <Suspense fallback={<PageLoader />}>
     <Component {...props} />
   </Suspense>
 );
 
-const HomePage = lazy(() => import("@/features/home/pages/HomePage"));
-const ContactPage = lazy(() => import("@/features/info/pages/Contact"));
-const CookiesPage = lazy(() => import("@/features/info/pages/Cookies"));
-const FAQPage = lazy(() => import("@/features/info/pages/FAQ"));
-const PrivacyPage = lazy(() => import("@/features/info/pages/Privacy"));
-const TermsPage = lazy(() => import("@/features/info/pages/Terms"));
+
+const HomePage = lazy(() => import('@/features/home/pages/HomePage'));
+const ContactPage = lazy(() => import('@/features/info/pages/Contact'));
+const CookiesPage = lazy(() => import('@/features/info/pages/Cookies'));
+const FAQPage = lazy(() => import('@/features/info/pages/FAQ'));
+const PrivacyPage = lazy(() => import('@/features/info/pages/Privacy'));
+const TermsPage = lazy(() => import('@/features/info/pages/Terms'));
+
+const HomePageRoute = Loadable(HomePage);
+const ContactPageRoute = Loadable(ContactPage);
+const CookiesPageRoute = Loadable(CookiesPage);
+const FAQPageRoute = Loadable(FAQPage);
+const PrivacyPageRoute = Loadable(PrivacyPage);
+const TermsPageRoute = Loadable(TermsPage);
 
 export const router = createBrowserRouter([
   {
@@ -28,31 +36,31 @@ export const router = createBrowserRouter([
     children: [
       {
         path: PATHS.HOME,
-        element: <Loadable(HomePage) />,
+        element: <HomePageRoute />,
       },
       {
         path: PATHS.INFO.CONTACT,
-        element: <Loadable(ContactPage) />,
+        element: <ContactPageRoute />,
       },
       {
         path: PATHS.INFO.COOKIES,
-        element: <Loadable(CookiesPage) />,
+        element: <CookiesPageRoute />,
       },
       {
         path: PATHS.INFO.FAQ,
-        element: <Loadable(FAQPage) />,
+        element: <FAQPageRoute />,
       },
       {
         path: PATHS.INFO.PRIVACY,
-        element: <Loadable(PrivacyPage) />,
+        element: <PrivacyPageRoute />,
       },
       {
         path: PATHS.INFO.TERMS,
-        element: <Loadable(TermsPage) />,
+        element: <TermsPageRoute />,
       },
       {
-        path: "*",
-        element: <div className="p-20 text-center">404 - Página no encontrada</div>,
+        path: '*',
+        element: <Navigate to={PATHS.HOME} replace />,
       },
     ],
   },

@@ -1,4 +1,3 @@
-    
 export const PATHS = {
   HOME: '/',
   INFO: {
