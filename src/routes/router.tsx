@@ -1,34 +1,16 @@
 import { createBrowserRouter, Navigate } from 'react-router-dom';
-import { lazy, Suspense } from 'react';
+import { lazy } from 'react';
 import { PATHS } from '@/config/paths';
 import { PublicLayout } from '@/layouts/PublicLayout';
-
-const PageLoader = () => (
-  <div className="flex min-h-[50vh] items-center justify-center">
-    <div className="h-8 w-8 animate-spin rounded-full border-4 border-muted border-t-foreground" />
-  </div>
-);
-
-const Loadable = (Component: React.ComponentType) => (props: object) => (
-  <Suspense fallback={<PageLoader />}>
-    <Component {...props} />
-  </Suspense>
-);
+import { Loadable } from '@/components/utils/Loadable';
 
 
-const HomePage = lazy(() => import('@/features/home/pages/HomePage'));
-const ContactPage = lazy(() => import('@/features/info/pages/Contact'));
-const CookiesPage = lazy(() => import('@/features/info/pages/Cookies'));
-const FAQPage = lazy(() => import('@/features/info/pages/FAQ'));
-const PrivacyPage = lazy(() => import('@/features/info/pages/Privacy'));
-const TermsPage = lazy(() => import('@/features/info/pages/Terms'));
-
-const HomePageRoute = Loadable(HomePage);
-const ContactPageRoute = Loadable(ContactPage);
-const CookiesPageRoute = Loadable(CookiesPage);
-const FAQPageRoute = Loadable(FAQPage);
-const PrivacyPageRoute = Loadable(PrivacyPage);
-const TermsPageRoute = Loadable(TermsPage);
+const HomePage = Loadable(lazy(() => import('@/features/home/pages/HomePage')));
+const ContactPage = Loadable(lazy(() => import('@/features/info/pages/Contact')));
+const CookiesPage = Loadable(lazy(() => import('@/features/info/pages/Cookies')));
+const FAQPage = Loadable(lazy(() => import('@/features/info/pages/FAQ')));
+const PrivacyPage = Loadable(lazy(() => import('@/features/info/pages/Privacy')));
+const TermsPage = Loadable(lazy(() => import('@/features/info/pages/Terms')));
 
 export const router = createBrowserRouter([
   {
@@ -36,27 +18,27 @@ export const router = createBrowserRouter([
     children: [
       {
         path: PATHS.HOME,
-        element: <HomePageRoute />,
+        element: <HomePage />, 
       },
       {
         path: PATHS.INFO.CONTACT,
-        element: <ContactPageRoute />,
+        element: <ContactPage />,
       },
       {
         path: PATHS.INFO.COOKIES,
-        element: <CookiesPageRoute />,
+        element: <CookiesPage />,
       },
       {
         path: PATHS.INFO.FAQ,
-        element: <FAQPageRoute />,
+        element: <FAQPage />,
       },
       {
         path: PATHS.INFO.PRIVACY,
-        element: <PrivacyPageRoute />,
+        element: <PrivacyPage />,
       },
       {
         path: PATHS.INFO.TERMS,
-        element: <TermsPageRoute />,
+        element: <TermsPage />,
       },
       {
         path: '*',
