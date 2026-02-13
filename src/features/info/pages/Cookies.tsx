@@ -67,7 +67,6 @@ const Cookies = () => {
       </section>
 
       <main className="grow max-w-315 mx-auto px-6 pb-24 space-y-6 md:space-y-8 w-full">
-
         <article className="bg-surface p-8 md:p-12 rounded-3xl border border-muted/10 shadow-sm flex flex-col md:flex-row gap-8 items-center md:items-start text-center md:text-left transition-colors duration-300">
           <div className="w-24 h-24 rounded-3xl bg-background border border-muted/10 text-brand flex items-center justify-center shrink-0 shadow-inner">
             <Cookie size={48} strokeWidth={1.5} />
@@ -83,7 +82,6 @@ const Cookies = () => {
         </article>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-          
           <InfoCard 
             icon={Layers} 
             title={COOKIES_SECTIONS.types.title}
