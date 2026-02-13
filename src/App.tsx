@@ -1,5 +1,4 @@
-
-import Faq from './features/info/pages/FAQ';
+import Contact from "./features/info/pages/Contact";
 
 import ThemeToggle from './ThemeToggle';
 function App() {
@@ -8,8 +7,7 @@ function App() {
   return (
     <>
       <main>
-   
-        <Faq />
+        <Contact />
    
       </main>
       <ThemeToggle />
