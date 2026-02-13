@@ -1,4 +1,4 @@
-import HomePage from './features/home/pages/HomePage';
+import Cookies from './features/info/pages/Cookies';
 import ThemeToggle from './ThemeToggle';
 function App() {
 
@@ -6,7 +6,7 @@ function App() {
   return (
     <>
       <main>
-        <HomePage />
+        <Cookies />
       </main>
       <ThemeToggle />
     </>

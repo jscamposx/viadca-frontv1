@@ -15,6 +15,18 @@ const Logos = ({ logos }: LogosProps) => {
     setPaused,
   } = useLogosCarousel(logos);
 
+  const handleMouseEnter = () => {
+    if (window.matchMedia('(hover: hover)').matches) {
+      setPaused(true);
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (window.matchMedia('(hover: hover)').matches) {
+      setPaused(false);
+    }
+  };
+
   return (
     <section
       id="socios"
@@ -25,11 +37,8 @@ const Logos = ({ logos }: LogosProps) => {
       <div className="max-w-315 mx-auto">
         <div
           ref={containerRef}
-          onMouseEnter={() => setPaused(true)}
-          onMouseLeave={() => setPaused(false)}
-          onFocus={() => setPaused(true)}
-          onBlur={() => setPaused(false)}
-          tabIndex={0}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
           className="relative overflow-hidden"
         >
           <div
