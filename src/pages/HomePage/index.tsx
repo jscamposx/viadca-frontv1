@@ -7,7 +7,7 @@ import Logos from '@/features/home/components/Logos';
 import Reviews from '@/features/home/components/Reviews';
 import TravelInsights from '@/features/home/components/TravelInsights';
 
-export const HomePage = (): JSX.Element => {
+export const HomePage = () => {
   return (
     <main>
       <Hero />
