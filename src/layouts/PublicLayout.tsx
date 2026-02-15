@@ -1,6 +1,6 @@
 import { Outlet, ScrollRestoration } from 'react-router-dom';
 
-import ThemeToggle from '@/ThemeToggle';
+import ThemeToggle from '@/shared/ui/ThemeToggle';
 
 export const PublicLayout = () => {
   return (

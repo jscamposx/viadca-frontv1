@@ -20,8 +20,8 @@ import {
   CONTACT_LOCATION, 
   CONTACT_HOURS, 
   SOCIAL_LINKS
-} from "../data/contact.data";
-import SupportCTA from "../components/SupportCTA";
+} from "@/features/legal/data/contact.data";
+import SupportCTA from "@/features/legal/components/SupportCTA";
 const Contact = () => {
   const handleAction = (type: string, value: string) => {
     const cleanValue = value.replace(/\D/g, "");

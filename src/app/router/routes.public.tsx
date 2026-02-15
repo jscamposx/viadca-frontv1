@@ -1,16 +1,16 @@
 import { createBrowserRouter, Navigate } from 'react-router-dom';
 import { lazy } from 'react';
-import { PATHS } from '@/config/paths';
+import { PATHS } from '@/app/config/paths';
 import { PublicLayout } from '@/layouts/PublicLayout';
-import { Loadable } from '@/components/utils/Loadable';
+import { Loadable } from '@/shared/lib/Loadable';
 
 
-const HomePage = Loadable(lazy(() => import('@/features/home/pages/HomePage')));
-const ContactPage = Loadable(lazy(() => import('@/features/info/pages/Contact')));
-const CookiesPage = Loadable(lazy(() => import('@/features/info/pages/Cookies')));
-const FAQPage = Loadable(lazy(() => import('@/features/info/pages/FAQ')));
-const PrivacyPage = Loadable(lazy(() => import('@/features/info/pages/Privacy')));
-const TermsPage = Loadable(lazy(() => import('@/features/info/pages/Terms')));
+const HomePage = Loadable(lazy(() => import('@/pages/HomePage')));
+const ContactPage = Loadable(lazy(() => import('@/pages/Legal/ContactPage')));
+const CookiesPage = Loadable(lazy(() => import('@/pages/Legal/CookiesPage')));
+const FAQPage = Loadable(lazy(() => import('@/pages/Legal/FaqPage')));
+const PrivacyPage = Loadable(lazy(() => import('@/pages/Legal/PrivacyPage')));
+const TermsPage = Loadable(lazy(() => import('@/pages/Legal/TermsPage')));
 
 export const router = createBrowserRouter([
   {

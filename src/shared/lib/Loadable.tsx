@@ -1,5 +1,5 @@
 import { Suspense, ComponentType } from 'react';
-import { PageLoader } from '@/components/ui/PageLoader';
+import { PageLoader } from '@/shared/ui/PageLoader';
 
 
 export const Loadable = <P extends object>(Component: ComponentType<P>) => {

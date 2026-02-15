@@ -9,8 +9,8 @@ import {
   Info, 
   Check
 } from 'lucide-react';
-import { COOKIES_HERO, COOKIES_SECTIONS } from "../data/cookies.data";
-import SupportCTA from "../components/SupportCTA";
+import { COOKIES_HERO, COOKIES_SECTIONS } from "@/features/legal/data/cookies.data";
+import SupportCTA from "@/features/legal/components/SupportCTA";
 
 const InfoCard = ({ 
   icon: Icon, 

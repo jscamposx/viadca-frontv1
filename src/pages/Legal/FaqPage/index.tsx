@@ -1,6 +1,6 @@
 import { ChevronDown, HelpCircle} from "lucide-react";
-import { FAQ_HERO, FAQ_CATEGORIES } from "../data/faq.data";
-import SupportCTA from "../components/SupportCTA";
+import { FAQ_HERO, FAQ_CATEGORIES } from "@/features/legal/data/faq.data";
+import SupportCTA from "@/features/legal/components/SupportCTA";
 
 const Faq = () => {
   return (

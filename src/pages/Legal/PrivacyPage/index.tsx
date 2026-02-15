@@ -10,8 +10,8 @@ import {
   AlertTriangle, 
   Share2
 } from 'lucide-react';
-import { PRIVACY_HERO, PRIVACY_SECTIONS } from "../data/privacy.data";
-import SupportCTA from "../components/SupportCTA";
+import { PRIVACY_HERO, PRIVACY_SECTIONS } from "@/features/legal/data/privacy.data";
+import SupportCTA from "@/features/legal/components/SupportCTA";
 
 const InfoCard = ({ 
   icon: Icon, 

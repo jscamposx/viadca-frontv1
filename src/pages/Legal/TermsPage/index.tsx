@@ -9,8 +9,8 @@ import {
   Check,
   AlertCircle
 } from 'lucide-react';
-import { TERMS_HERO, TERMS_SECTIONS } from "../data/terms.data";
-import SupportCTA from "../components/SupportCTA";
+import { TERMS_HERO, TERMS_SECTIONS } from "@/features/legal/data/terms.data";
+import SupportCTA from "@/features/legal/components/SupportCTA";
 
 const InfoCard = ({
   icon: Icon,

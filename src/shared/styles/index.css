@@ -1,6 +1,6 @@
 @import "tailwindcss";
-@import "./styles/theme.css";
-@import "./styles/animations.css";
+@import "./theme.css";
+@import "./animations.css";
 
 @layer utilities {
   .no-scrollbar::-webkit-scrollbar {
