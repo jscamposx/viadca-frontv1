@@ -5,7 +5,7 @@ import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export const useHeroAnimation = () => {
+export const useHeroAnimation = (isMediaReady: boolean) => {
   const container = useRef<HTMLDivElement>(null);
   const rightSideWrapper = useRef<HTMLDivElement>(null);
   const videoInner = useRef<HTMLDivElement>(null);
@@ -16,6 +16,10 @@ export const useHeroAnimation = () => {
 
   useGSAP(
     () => {
+      if (!isMediaReady) {
+        return;
+      }
+
       const mm = gsap.matchMedia();
 
       mm.add("(min-width: 1024px)", () => {
@@ -176,8 +180,26 @@ export const useHeroAnimation = () => {
 
         tl.to(overlay.current, { opacity: 0, duration: 1 }, "mobileSplit+=1");
       });
+
+      let raf1 = 0;
+      let raf2 = 0;
+      raf1 = requestAnimationFrame(() => {
+        raf2 = requestAnimationFrame(() => {
+          ScrollTrigger.refresh();
+        });
+      });
+
+      return () => {
+        if (raf1) {
+          cancelAnimationFrame(raf1);
+        }
+        if (raf2) {
+          cancelAnimationFrame(raf2);
+        }
+        mm.revert();
+      };
     },
-    { scope: container }
+    { scope: container, dependencies: [isMediaReady] }
   );
 
   return {

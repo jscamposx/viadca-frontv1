@@ -7,6 +7,7 @@ import { HERO_CONTENT, HERO_UI } from "../data/hero.data";
 const Hero = () => {
   const [activeTab, setActiveTab] = useState<string>("mexico");
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [isHeroMediaReady, setIsHeroMediaReady] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   const {
@@ -17,7 +18,7 @@ const Hero = () => {
     text,
     leftContent,
     leftContentInner,
-  } = useHeroAnimation();
+  } = useHeroAnimation(isHeroMediaReady);
   const currentContent = HERO_CONTENT[activeTab];
 
   const handleTabChange = (key: string) => {
@@ -33,6 +34,11 @@ const Hero = () => {
       videoRef.current.load();
     }
   }, [activeTab]);
+
+  const handleVideoReady = () => {
+    setIsTransitioning(false);
+    setIsHeroMediaReady(true);
+  };
 
   return (
     <div className="bg-background w-full overflow-hidden pt-24 md:pt-32 transition-colors duration-300">
@@ -162,11 +168,11 @@ const Hero = () => {
 
         <div
           ref={rightSideWrapper}
-          className="order-1 lg:order-2 relative z-20 flex items-center justify-center p-4 lg:p-0 h-[45%] lg:h-full grow"
+          className="order-1 lg:order-2 relative z-20 flex items-center justify-center p-4 lg:p-0 h-[45%] lg:h-full grow min-h-[260px] lg:min-h-full"
         >
           <div
             ref={videoInner}
-            className="relative overflow-hidden shadow-2xl bg-surface w-full h-full lg:w-[85%] lg:h-[80vh] rounded-2xl lg:rounded-3xl border border-surface/10"
+            className="relative overflow-hidden shadow-2xl bg-surface w-full h-full lg:w-[85%] lg:h-[80vh] rounded-2xl lg:rounded-3xl border border-surface/10 min-h-[240px] lg:min-h-[560px]"
           >
             <video
               ref={videoRef}
@@ -174,7 +180,9 @@ const Hero = () => {
               muted
               loop
               playsInline
-              onCanPlay={() => setIsTransitioning(false)}
+              preload="metadata"
+              onLoadedMetadata={handleVideoReady}
+              onCanPlay={handleVideoReady}
               className={`w-full h-full object-cover absolute inset-0 z-0 transition-opacity duration-500 ${
                 isTransitioning ? "opacity-0" : "opacity-100"
               }`}
