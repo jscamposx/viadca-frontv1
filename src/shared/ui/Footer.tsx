@@ -105,8 +105,8 @@ const Footer = () => {
     >
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         <div className="absolute -top-20 -left-32 w-64 h-64 rounded-full bg-brand/10 blur-3xl" />
-        <div className="absolute top-1/4 -right-20 w-80 h-80 rounded-full bg-orange-500/10 blur-3xl" />
-        <div className="absolute bottom-20 left-1/3 w-48 h-48 rounded-full bg-purple-500/10 blur-2xl" />
+        <div className="absolute top-1/4 -right-20 w-80 h-80 rounded-full bg-brand/5 blur-3xl" />
+        <div className="absolute bottom-20 left-1/3 w-48 h-48 rounded-full bg-brand/8 blur-2xl" />
 
         <div className="absolute top-10 left-10 opacity-20 dark:opacity-10" aria-hidden="true">
           <div className="grid grid-cols-6 gap-2">

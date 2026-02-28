@@ -9,6 +9,7 @@
   --color-brand-foreground: var(--brand-foreground);
 }
 
+
 :root {
   font-family: "Outfit", ui-sans-serif, system-ui, sans-serif;
   --background: #ffffff;
@@ -29,3 +30,18 @@
   --brand-foreground: #000000;
   --logo-filter: invert(1) brightness(1);
 }
+
+.theme-blue              { --brand: #00509d; --brand-foreground: #ffffff; }
+.dark.theme-blue         { --brand: #38bdf8; --brand-foreground: #000000; }
+
+.theme-rose              { --brand: #e11d48; --brand-foreground: #ffffff; }
+.dark.theme-rose         { --brand: #fb7185; --brand-foreground: #000000; }
+
+.theme-violet            { --brand: #7c3aed; --brand-foreground: #ffffff; }
+.dark.theme-violet       { --brand: #a78bfa; --brand-foreground: #000000; }
+
+.theme-emerald           { --brand: #059669; --brand-foreground: #ffffff; }
+.dark.theme-emerald      { --brand: #34d399; --brand-foreground: #000000; }
+
+.theme-amber             { --brand: #d97706; --brand-foreground: #ffffff; }
+.dark.theme-amber        { --brand: #fbbf24; --brand-foreground: #000000; }
