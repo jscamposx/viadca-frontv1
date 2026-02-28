@@ -139,9 +139,9 @@ const Hero = () => {
                   {HERO_UI.helpTitle}
                 </p>
                 <ul className="space-y-1.5 lg:space-y-2.5 flex flex-col items-start">
-                  {currentContent.features.map((item, index) => (
+                  {currentContent.features.map((item) => (
                     <li
-                      key={index}
+                      key={item}
                       className="flex items-center lg:items-start text-xs sm:text-base text-muted font-medium text-left"
                     >
                       <div className="mr-2 p-0.5 bg-brand rounded-full shrink-0" aria-hidden="true">
@@ -168,11 +168,11 @@ const Hero = () => {
 
         <div
           ref={rightSideWrapper}
-          className="order-1 lg:order-2 relative z-20 flex items-center justify-center p-4 lg:p-0 h-[45%] lg:h-full grow min-h-[260px] lg:min-h-full"
+          className="order-1 lg:order-2 relative z-20 flex items-center justify-center p-4 lg:p-0 h-[45%] lg:h-full grow min-h-65 lg:min-h-full"
         >
           <div
             ref={videoInner}
-            className="relative overflow-hidden shadow-2xl bg-surface w-full h-full lg:w-[85%] lg:h-[80vh] rounded-2xl lg:rounded-3xl border border-surface/10 min-h-[240px] lg:min-h-[560px]"
+            className="relative overflow-hidden shadow-2xl bg-surface w-full h-full lg:w-[85%] lg:h-[80vh] rounded-2xl lg:rounded-3xl border border-surface/10 `min-h-60 lg:min-h-140"
           >
             <video
               ref={videoRef}

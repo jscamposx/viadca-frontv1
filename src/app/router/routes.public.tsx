@@ -6,11 +6,11 @@ import { Loadable } from '@/shared/lib/Loadable';
 
 
 const HomePage = Loadable(lazy(() => import('@/pages/HomePage')));
-const ContactPage = Loadable(lazy(() => import('@/pages/Legal/ContactPage')));
-const CookiesPage = Loadable(lazy(() => import('@/pages/Legal/CookiesPage')));
-const FAQPage = Loadable(lazy(() => import('@/pages/Legal/FaqPage')));
-const PrivacyPage = Loadable(lazy(() => import('@/pages/Legal/PrivacyPage')));
-const TermsPage = Loadable(lazy(() => import('@/pages/Legal/TermsPage')));
+const ContactPage = Loadable(lazy(() => import('@/pages/Info/ContactPage')));
+const CookiesPage = Loadable(lazy(() => import('@/pages/Info/CookiesPage')));
+const FAQPage = Loadable(lazy(() => import('@/pages/Info/FaqPage')));
+const PrivacyPage = Loadable(lazy(() => import('@/pages/Info/PrivacyPage')));
+const TermsPage = Loadable(lazy(() => import('@/pages/Info/TermsPage')));
 
 export const router = createBrowserRouter([
   {
