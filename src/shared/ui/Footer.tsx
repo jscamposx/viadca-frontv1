@@ -93,7 +93,7 @@ const LEGAL_LINKS = [
   { path: PATHS.INFO.COOKIES, label: "Cookies" },
 ];
 
-export const Footer = () => {
+const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (

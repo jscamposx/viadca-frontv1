@@ -1,6 +1,6 @@
-export type CardSize = "narrow" | "large" | "wide";
+type CardSize = "narrow" | "large" | "wide";
 
-export interface GalleryItem {
+interface GalleryItem {
   id: number;
   type: CardSize;
   title: string;

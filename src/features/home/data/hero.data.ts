@@ -3,7 +3,7 @@ import heroVideo2 from "../assets/videos/hero-video2.webm";
 import heroVideo3 from "../assets/videos/hero-video3.webm";
 import heroVideo4 from "../assets/videos/hero-video4.webm";
 
-export interface HeroContentItem {
+interface HeroContentItem {
   label: string;
   title: string;
   desc: string;

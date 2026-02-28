@@ -3,7 +3,7 @@ import insightsBloqueosImg from "../assets/images/insights/insights-bloqueos.avi
 import insightsRutaImg from "../assets/images/insights/insights-ruta.avif";
 import insightsMesesImg from "../assets/images/insights/insights-meses.avif";
 
-export interface InsightItem {
+interface InsightItem {
   id: number;
   title: string;
   description: string;

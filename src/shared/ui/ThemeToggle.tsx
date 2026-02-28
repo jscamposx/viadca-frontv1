@@ -1,7 +1,7 @@
 import { useEffect, useState, type MouseEvent } from "react";
 import { Sun, Moon } from "lucide-react";
 
-export const ThemeToggle = () => {
+const ThemeToggle = () => {
   const [isDark, setIsDark] = useState(() => {
     if (typeof window === "undefined") return false;
     const stored = localStorage.getItem("theme");

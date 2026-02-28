@@ -49,9 +49,9 @@ const FeatureModal = ({ feature, onClose }: FeatureModalProps) => {
 
         <div className="flex-1 overflow-y-auto px-8 md:px-16 pb-16 custom-scrollbar">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-24 gap-y-12 mt-8">
-            {feature.modalDetails.map((item, idx) => (
+            {feature.modalDetails.map((item) => (
               <section
-                key={idx}
+                key={item.headline}
                 className="flex flex-col gap-4 pt-8"
               >
                 <h3 className="text-lg font-bold text-foreground leading-snug">

@@ -2,23 +2,29 @@ import { Star, Quote } from "lucide-react";
 import { useReviews } from "../hooks/useReviews";
 import { REVIEWS_UI } from "../data/reviews.data";
 
+const STAR_POSITIONS = [1, 2, 3, 4, 5];
+
+const Stars = ({ score }: { score: number }) => {
+  const rounded = Math.round(score);
+  return (
+    <>
+      {STAR_POSITIONS.map((n) => (
+        <Star
+          key={n}
+          className={`w-4 h-4 ${
+            n <= rounded
+              ? "fill-foreground text-foreground"
+              : "text-muted/30"
+          }`}
+          aria-hidden="true"
+        />
+      ))}
+    </>
+  );
+};
+
 const Reviews = () => {
   const { containerRef, trackRef, reviews, scroll } = useReviews();
-
-  const renderStars = (score: number) => {
-    const rounded = Math.round(score);
-    return Array.from({ length: 5 }, (_, i) => (
-      <Star
-        key={`star-${i}`}
-        className={`w-4 h-4 ${
-          i < rounded 
-            ? "fill-foreground text-foreground" 
-            : "text-muted/30"
-        }`}
-        aria-hidden="true"
-      />
-    ));
-  };
 
   const initials = (name: string = "") => {
     const parts = name.trim().split(" ");
@@ -130,7 +136,7 @@ const Reviews = () => {
                     role="img"
                     aria-label={REVIEWS_UI.ratingLabel(review.score)}
                   >
-                    {renderStars(review.score)}
+                    <Stars score={review.score} />
                   </span>
                   <span className="ml-1 text-foreground">{review.score}</span>
                 </div>

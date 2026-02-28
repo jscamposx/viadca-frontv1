@@ -61,9 +61,9 @@ const Logos = ({ logos }: LogosProps) => {
                 ref={sIdx === 0 ? firstSeqRef : undefined}
                 className="flex w-max shrink-0 items-center"
               >
-                {seq.map((logo, idx) => (
+                {seq.map((logo) => (
                   <li
-                    key={`logo-${sIdx}-${idx}`}
+                    key={`${sIdx}-${logo.alt}`}
                     className="shrink-0 pr-16 sm:pr-20 lg:pr-24"
                   >
                     <div className="flex items-center justify-center">

@@ -58,16 +58,6 @@ export const CONTACT_HOURS = [
 export const SOCIAL_LINKS = [
   { name: "Facebook", url: "#", gradient: "from-[#1877F2] to-blue-600", icon: "Facebook" },
   { name: "Instagram", url: "#", gradient: "from-pink-500 via-purple-500 to-orange-500", icon: "Instagram" },
-  { name: "TikTok", url: "#", gradient: "from-gray-900 to-black", icon: "Video" }, // Video como fallback
+  { name: "TikTok", url: "#", gradient: "from-gray-900 to-black", icon: "Video" },
   { name: "YouTube", url: "#", gradient: "from-[#FF0000] to-red-600", icon: "Youtube" }
 ];
-
-export const CONTACT_CTA = {
-  title: "¿Aún necesitas ayuda?",
-  description: "Escríbenos y un asesor te responderá personalmente para planificar tu viaje o aclarar cualquier duda que no encontraste arriba.",
-  badges: [
-    { text: "Asesoría personalizada", color: "bg-blue-500" },
-    { text: "Respuestas rápidas", color: "bg-rose-500" },
-    { text: "Experiencia en viajes", color: "bg-indigo-500" }
-  ]
-};

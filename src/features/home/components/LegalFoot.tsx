@@ -1,24 +1,27 @@
 import { Link } from "react-router-dom";
 import { LEGAL_CONTENT, LEGAL_FOOTER_UI } from "../data/legalfoot.data";
 
-const LegalFoot = () => {
-  const renderSegments = (segments: typeof LEGAL_CONTENT.column1[0]['segments']) => {
-    return segments.map((segment, index) => {
-      if (segment.link) {
-        return (
-          <Link
-            key={index}
-            to={segment.link}
-            className="text-foreground underline decoration-muted/40 hover:text-brand hover:decoration-brand transition-colors"
-          >
-            {segment.text}
-          </Link>
-        );
-      }
-      return <span key={index}>{segment.text}</span>;
-    });
-  };
+type LegalSegment = { text: string; link?: string };
 
+const Segments = ({ segments }: { segments: LegalSegment[] }) => (
+  <>
+    {segments.map((segment) =>
+      segment.link ? (
+        <Link
+          key={segment.text}
+          to={segment.link}
+          className="text-foreground underline decoration-muted/40 hover:text-brand hover:decoration-brand transition-colors"
+        >
+          {segment.text}
+        </Link>
+      ) : (
+        <span key={segment.text}>{segment.text}</span>
+      )
+    )}
+  </>
+);
+
+const LegalFoot = () => {
   return (
     <aside
       aria-label={LEGAL_FOOTER_UI.ariaLabel}
@@ -28,7 +31,7 @@ const LegalFoot = () => {
         <div className="text-justify space-y-2">
           {LEGAL_CONTENT.column1.map((item) => (
             <p key={item.id}>
-              {renderSegments(item.segments)}
+              <Segments segments={item.segments} />
             </p>
           ))}
         </div>
@@ -36,7 +39,7 @@ const LegalFoot = () => {
         <div className="text-justify space-y-2">
           {LEGAL_CONTENT.column2.map((item) => (
             <p key={item.id}>
-              {renderSegments(item.segments)}
+              <Segments segments={item.segments} />
             </p>
           ))}
         </div>
