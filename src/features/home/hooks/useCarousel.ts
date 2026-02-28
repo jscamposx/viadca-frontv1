@@ -19,6 +19,7 @@ export const useCarousel = () => {
         {
           y: 100,
           opacity: 0,
+          immediateRender: false,
         },
         {
           y: 0,

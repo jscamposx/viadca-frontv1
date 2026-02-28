@@ -31,7 +31,7 @@ export const galleryItems: GalleryItem[] = [
     type: "wide",
     title: "Escapadas a la playa con todo resuelto.",
     description: "Hoteles frente al mar, traslados incluidos y experiencias para desconectar sin preocupaciones.",
-    imgSrc: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=832&h=680&auto=format&fit=crop",
+    imgSrc: "https://picsum.photos/seed/beach-wide/832/680",
     imgPosition: "object-center",
   },
   {
@@ -39,7 +39,7 @@ export const galleryItems: GalleryItem[] = [
     type: "large",
     title: "Ciudades icónicas para viajes express.",
     description: "Vuelos directos, hoteles boutique y guías locales para aprovechar cada hora.",
-    imgSrc: "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?q=80&w=620&h=680&auto=format&fit=crop",
+    imgSrc: "https://picsum.photos/seed/city-large/620/680",
     imgPosition: "object-center",
   },
   {
@@ -47,7 +47,7 @@ export const galleryItems: GalleryItem[] = [
     type: "wide",
     title: "Rutas de aventura con respaldo total.",
     description: "Circuitos confiables, seguros y acompañamiento en cada etapa del viaje.",
-    imgSrc: "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?q=80&w=832&h=680&auto=format&fit=crop",
+    imgSrc: "https://picsum.photos/seed/mountain-wide/832/680",
     imgPosition: "object-center",
   },
   {
@@ -55,7 +55,7 @@ export const galleryItems: GalleryItem[] = [
     type: "narrow",
     title: "Ver todos los viajes.",
     description: "Explora el catálogo completo y encuentra tu próxima experiencia.",
-    imgSrc: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?q=80&w=400&h=680&auto=format&fit=crop",
+    imgSrc: "https://picsum.photos/seed/travel-narrow/400/680",
     imgPosition: "object-center",
   },
 ];

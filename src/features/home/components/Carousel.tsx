@@ -78,7 +78,8 @@ export default function Carousel() {
                 <img
                   src={item.imgSrc}
                   alt={item.title}
-                  loading="lazy"
+                  loading="eager"
+                  decoding="async"
                   className={`w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03] ${item.imgPosition}`}
                 />
               </div>
