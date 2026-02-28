@@ -15,9 +15,9 @@ import LegalHero from "./LegalHero";
 import SupportCTA from "./SupportCTA";
 
 const TermsContent = () => (
-  <div className="flex flex-col min-h-screen bg-background font-sans transition-colors duration-300">
+  <>
     <LegalHero icon={FileText} hero={TERMS_HERO} />
-    <main className="grow max-w-315 mx-auto px-6 pb-24 space-y-6 md:space-y-8 w-full">
+    <div className="max-w-315 mx-auto px-6 pb-24 space-y-6 md:space-y-8 w-full">
     <article className="bg-surface p-8 md:p-12 rounded-3xl border border-muted/10 shadow-sm flex flex-col md:flex-row gap-8 items-center md:items-start text-center md:text-left transition-colors duration-300">
       <div className="w-24 h-24 rounded-3xl bg-background border border-muted/10 text-brand flex items-center justify-center shrink-0 shadow-inner">
         <FileText size={48} strokeWidth={1.5} />
@@ -102,8 +102,8 @@ const TermsContent = () => (
     <div className="pt-12 md:pt-16 border-t border-surface">
       <SupportCTA />
     </div>
-  </main>
   </div>
+  </>
 );
 
 export default TermsContent;

@@ -39,10 +39,6 @@ const Reviews = () => {
       className="bg-background w-full px-6 md:px-12 py-24 transition-colors duration-300"
       aria-labelledby="reviews-heading"
     >
-      <style>{`
-        .review-track::-webkit-scrollbar { display: none; }
-        .review-track { scrollbar-width: none; -ms-overflow-style: none; }
-      `}</style>
       
       <div className="max-w-315 mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
         
@@ -89,7 +85,7 @@ const Reviews = () => {
 
           <div
             ref={trackRef}
-            className="review-track flex gap-6 lg:gap-8 overflow-x-auto overflow-y-visible pb-4 md:pb-6 snap-x snap-mandatory scroll-smooth pr-1 lg:pr-2"
+            className="no-scrollbar flex gap-6 lg:gap-8 overflow-x-auto overflow-y-visible pb-4 md:pb-6 snap-x snap-mandatory scroll-smooth pr-1 lg:pr-2"
           >
             {reviews.map((review) => (
               <article

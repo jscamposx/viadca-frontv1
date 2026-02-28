@@ -8,7 +8,7 @@
   --color-brand-foreground: var(--brand-foreground);
 }
 
-/*  Claro (default)  */
+
 :root {
   font-family: "Outfit", ui-sans-serif, system-ui, sans-serif;
   --background: #ffffff;
@@ -20,7 +20,7 @@
   --logo-filter: invert(0) brightness(0);
 }
 
-/*  Oscuro  */
+
 .dark {
   --background: #09090b;
   --surface:    #18181b;
@@ -31,8 +31,6 @@
   --logo-filter: invert(1) brightness(1);
 }
 
-/*  Violeta  */
-/* Requiere .dark en html para que dark: utilities funcionen */
 .theme-violet {
   --background: #0d0a1f;
   --surface:    #1a1233;
@@ -43,7 +41,7 @@
   --logo-filter: invert(1) brightness(0.85);
 }
 
-/*  Esmeralda  */
+
 .theme-emerald {
   --background: #041a0e;
   --surface:    #082a18;
@@ -54,7 +52,7 @@
   --logo-filter: invert(1) brightness(0.85);
 }
 
-/*  Rosa  */
+
 .theme-rose {
   --background: #1a0508;
   --surface:    #2d0a12;
@@ -65,8 +63,7 @@
   --logo-filter: invert(1) brightness(0.85);
 }
 
-/*  Ámbar (claro cálido)  */
-/* NO usa .dark  es un tema claro de tonos cálidos */
+
 .theme-amber {
   --background: #fffbeb;
   --surface:    #fef3c7;
@@ -77,7 +74,6 @@
   --logo-filter: invert(0) brightness(0.15);
 }
 
-/*  Medianoche  */
 .theme-midnight {
   --background: #060b18;
   --surface:    #0e1628;

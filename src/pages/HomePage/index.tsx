@@ -7,19 +7,17 @@ import Logos from '@/features/home/components/Logos';
 import Reviews from '@/features/home/components/Reviews';
 import TravelInsights from '@/features/home/components/TravelInsights';
 
-const HomePage = () => {
-  return (
-    <main>
-      <Hero />
-      <Carousel />
-      <Features />
-      <TravelInsights />
-      <Reviews />
-      <ContactCTA />
-      <LegalFoot />
-      <Logos />
-    </main>
-  );
-};
+const HomePage = () => (
+  <>
+    <Hero />
+    <Carousel />
+    <Features />
+    <TravelInsights />
+    <Reviews />
+    <ContactCTA />
+    <LegalFoot />
+    <Logos />
+  </>
+);
 
 export default HomePage;

@@ -3,7 +3,7 @@ import { FAQ_HERO, FAQ_CATEGORIES } from "../data/faq.data";
 import SupportCTA from "./SupportCTA";
 
 const FaqContent = () => (
-  <div className="min-h-screen bg-background font-sans transition-colors duration-300 selection:bg-brand/10 selection:text-brand">
+  <>
     <div className="fixed inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_top,var(--tw-gradient-stops))] from-brand/5 via-transparent to-transparent z-0" />
     <div className="relative z-10 max-w-315 mx-auto px-6 pt-32 pb-24">
       <div className="grid lg:grid-cols-12 gap-12 items-start">
@@ -25,7 +25,7 @@ const FaqContent = () => (
           </nav>
         </aside>
 
-        <main className="lg:col-span-9 space-y-20">
+        <div className="lg:col-span-9 space-y-20">
     <header className="space-y-6 max-w-3xl">
       <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface border border-muted/20 text-brand text-xs font-bold uppercase tracking-wider backdrop-blur-sm shadow-sm">
         <HelpCircle className="w-3.5 h-3.5" />
@@ -74,10 +74,10 @@ const FaqContent = () => (
     <div className="pt-12 border-t border-muted/10">
           <SupportCTA />
         </div>
-      </main>
+      </div>
       </div>
     </div>
-  </div>
+  </>
 );
 
 export default FaqContent;

@@ -22,7 +22,7 @@ export default function Carousel() {
       aria-label={CAROUSEL_UI.ariaLabel}
       className="bg-background w-full font-sans text-foreground py-16 md:py-24 overflow-hidden transition-colors duration-300"
     >
-      <div className="w-full mx-auto mb-8 md:mb-12 px-6 md:px-12 flex items-end justify-between gap-4" style={{ maxWidth: "1260px" }}>
+      <div className="w-full max-w-315 mx-auto mb-8 md:mb-12 px-6 md:px-12 flex items-end justify-between gap-4">
         <h2 className="text-[24px] leading-tight md:leading-tight font-semibold tracking-[-0.015em] md:text-[32px]">
             {CAROUSEL_UI.title}
         </h2>
@@ -33,7 +33,7 @@ export default function Carousel() {
             onClick={() => scroll("left")}
             disabled={!canScrollLeft}
             aria-label={CAROUSEL_UI.controls.prevLabel}
-            className="w-8 h-8 md:w-9 md:h-9 rounded-full flex items-center justify-center cursor-pointer bg-surface hover:bg-foreground/10 border border-border text-foreground transition-all duration-200 disabled:opacity-30 disabled:cursor-default"
+            className="w-8 h-8 md:w-9 md:h-9 rounded-full flex items-center justify-center cursor-pointer bg-surface hover:bg-foreground/10 border border-foreground/15 text-foreground transition-all duration-200 disabled:opacity-30 disabled:cursor-default"
           >
             <svg width="10" height="16" viewBox="0 0 10 16" fill="none" aria-hidden="true">
               <path d="M8.5 1.5L2 8L8.5 14.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
@@ -45,7 +45,7 @@ export default function Carousel() {
             onClick={() => scroll("right")}
             disabled={!canScrollRight}
             aria-label={CAROUSEL_UI.controls.nextLabel}
-            className="w-8 h-8 md:w-9 md:h-9 rounded-full flex items-center justify-center cursor-pointer bg-surface hover:bg-foreground/10 border border-border text-foreground transition-all duration-200 disabled:opacity-30 disabled:cursor-default"
+            className="w-8 h-8 md:w-9 md:h-9 rounded-full flex items-center justify-center cursor-pointer bg-surface hover:bg-foreground/10 border border-foreground/15 text-foreground transition-all duration-200 disabled:opacity-30 disabled:cursor-default"
           >
             <svg width="10" height="16" viewBox="0 0 10 16" fill="none" aria-hidden="true">
               <path d="M1.5 1.5L8 8L1.5 14.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
@@ -57,8 +57,7 @@ export default function Carousel() {
       <div
         ref={scrollRef}
         onScroll={checkScroll}
-        className="flex w-full overflow-x-auto overflow-y-hidden snap-x snap-mandatory gap-4 md:gap-8 pb-4 scroll-smooth"
-        style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+        className="no-scrollbar flex w-full overflow-x-auto overflow-y-hidden snap-x snap-mandatory gap-4 md:gap-8 pb-4 scroll-smooth"
       >
         <div
           className="shrink-0 snap-start w-6 md:w-auto"

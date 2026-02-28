@@ -27,7 +27,7 @@ const METHOD_ICONS: Record<string, LucideIcon> = { MessageCircle, Phone, Mail };
 const SOCIAL_ICONS: Record<string, LucideIcon> = { Facebook, Instagram, Youtube, Video };
 
 const ContactSections = () => (
-  <div className="min-h-screen bg-background font-sans transition-colors duration-300 selection:bg-brand/10 selection:text-brand">
+  <>
     <header className="relative pt-32 pb-20 md:pb-32 overflow-hidden px-6">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,var(--tw-gradient-stops))] from-brand/10 via-transparent to-transparent pointer-events-none" />
       <div className="relative max-w-315 w-full mx-auto text-center z-10">
@@ -49,7 +49,7 @@ const ContactSections = () => (
         </p>
       </div>
     </header>
-    <main className="relative -mt-8 px-6 pb-20">
+    <div className="relative -mt-8 px-6 pb-20">
     <div className="max-w-315 w-full mx-auto space-y-24">
       <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {CONTACT_METHODS.map((method) => {
@@ -170,8 +170,8 @@ const ContactSections = () => (
         <SupportCTA />
       </div>
     </div>
-  </main>
   </div>
+  </>
 );
 
 export default ContactSections;
