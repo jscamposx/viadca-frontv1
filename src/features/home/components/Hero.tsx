@@ -73,7 +73,7 @@ const Hero = () => {
 
           <button
             type="button"
-            className="group w-full sm:w-auto inline-flex items-center justify-center h-12 md:h-14 px-8 rounded-full border-2 border-brand bg-brand text-brand-foreground font-bold text-sm md:text-base cursor-pointer transition-all duration-200 hover:brightness-110 shadow-[0_0_20px_rgba(5,169,236,0.3)]"
+            className="group w-full sm:w-auto inline-flex items-center justify-center h-12 md:h-14 px-8 rounded-full border-2 border-brand bg-brand text-brand-foreground font-bold text-sm md:text-base cursor-pointer transition-all duration-200 hover:brightness-110 [box-shadow:0_0_20px_color-mix(in_srgb,var(--brand)_35%,transparent)]"
           >
             <span className="block transition-transform duration-300 group-hover:scale-95">
               <span className="md:hidden">{HERO_UI.ctas.secondary.mobile}</span>

@@ -25,7 +25,7 @@ const ContactCTA = () => {
         <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
           <button
             type="button"
-            className="group relative inline-flex items-center justify-center px-8 py-5 text-lg font-bold text-background bg-foreground rounded-full overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-foreground w-full sm:w-auto cursor-pointer"
+            className="group relative inline-flex items-center justify-center px-8 py-5 text-lg font-bold text-brand-foreground bg-brand rounded-full overflow-hidden transition-all duration-300 hover:brightness-110 hover:scale-105 [box-shadow:0_0_30px_color-mix(in_srgb,var(--brand)_30%,transparent)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand w-full sm:w-auto cursor-pointer"
           >
             <span className="relative z-10 flex items-center">
               {CONTACT_CONTENT.ctaWhatsApp}
@@ -35,7 +35,7 @@ const ContactCTA = () => {
 
           <button
             type="button"
-            className="group inline-flex items-center justify-center px-8 py-5 text-lg font-bold text-foreground bg-background border-2 border-muted/20 rounded-full transition-all duration-300 hover:border-foreground hover:bg-surface focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-muted w-full sm:w-auto"
+            className="group inline-flex items-center justify-center px-8 py-5 text-lg font-bold text-foreground bg-background border-2 border-muted/20 rounded-full transition-all duration-300 hover:border-brand hover:text-brand hover:bg-brand/5 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand w-full sm:w-auto cursor-pointer"
           >
             {CONTACT_CONTENT.ctaCall}
           </button>

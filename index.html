@@ -6,13 +6,10 @@
     <title>viadca-mainv1</title>
     <script>
       (function () {
-        var t = localStorage.getItem("theme");
-        var c = localStorage.getItem("theme-color") || "theme-blue";
-        var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-        if (t === "dark" || (!t && prefersDark)) {
-          document.documentElement.classList.add("dark");
-        }
-        document.documentElement.classList.add(c);
+        var DARK_THEMES = ["dark", "violet", "emerald", "rose", "midnight"];
+        var t = localStorage.getItem("theme") || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        if (DARK_THEMES.indexOf(t) !== -1) document.documentElement.classList.add("dark");
+        if (t !== "light" && t !== "dark") document.documentElement.classList.add("theme-" + t);
       })();
     </script>
   </head>

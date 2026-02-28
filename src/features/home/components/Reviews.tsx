@@ -13,7 +13,7 @@ const Stars = ({ score }: { score: number }) => {
           key={n}
           className={`w-4 h-4 ${
             n <= rounded
-              ? "fill-foreground text-foreground"
+              ? "fill-brand text-brand"
               : "text-muted/30"
           }`}
           aria-hidden="true"
@@ -71,7 +71,7 @@ const Reviews = () => {
               <button
                 type="button"
                 onClick={() => scroll("left")}
-                className="w-10 h-10 rounded-full border border-foreground/20 bg-background text-foreground hover:bg-foreground hover:text-background hover:shadow-sm transition cursor-pointer flex items-center justify-center"
+                className="w-10 h-10 rounded-full border border-foreground/20 bg-background text-foreground hover:bg-brand hover:border-brand hover:text-brand-foreground transition-all duration-200 cursor-pointer flex items-center justify-center"
                 aria-label="Ver anteriores"
               >
                 ←
@@ -79,7 +79,7 @@ const Reviews = () => {
               <button
                 type="button"
                 onClick={() => scroll("right")}
-                className="w-10 h-10 rounded-full border border-foreground/20 bg-background text-foreground hover:bg-foreground hover:text-background hover:shadow-sm transition cursor-pointer flex items-center justify-center"
+                className="w-10 h-10 rounded-full border border-foreground/20 bg-background text-foreground hover:bg-brand hover:border-brand hover:text-brand-foreground transition-all duration-200 cursor-pointer flex items-center justify-center"
                 aria-label="Ver siguientes"
               >
                 →

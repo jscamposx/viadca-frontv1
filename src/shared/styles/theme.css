@@ -1,5 +1,4 @@
-
-@theme {
+﻿@theme {
   --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
   --color-background: var(--background);
   --color-surface: var(--surface);
@@ -9,39 +8,82 @@
   --color-brand-foreground: var(--brand-foreground);
 }
 
-
+/*  Claro (default)  */
 :root {
   font-family: "Outfit", ui-sans-serif, system-ui, sans-serif;
   --background: #ffffff;
-  --surface: #f8fafc;
+  --surface:    #f4f6f9;
   --foreground: #0f172a;
-  --muted: #64748b;
-  --brand: #00509d;
+  --muted:      #64748b;
+  --brand:      #00509d;
   --brand-foreground: #ffffff;
   --logo-filter: invert(0) brightness(0);
 }
 
+/*  Oscuro  */
 .dark {
   --background: #09090b;
-  --surface: #18181b;
-  --foreground: #f8fafc;
-  --muted: #a1a1aa;
-  --brand: #38bdf8;
-  --brand-foreground: #000000;
+  --surface:    #18181b;
+  --foreground: #f4f4f5;
+  --muted:      #a1a1aa;
+  --brand:      #38bdf8;
+  --brand-foreground: #001a2e;
   --logo-filter: invert(1) brightness(1);
 }
 
-.theme-blue              { --brand: #00509d; --brand-foreground: #ffffff; }
-.dark.theme-blue         { --brand: #38bdf8; --brand-foreground: #000000; }
+/*  Violeta  */
+/* Requiere .dark en html para que dark: utilities funcionen */
+.theme-violet {
+  --background: #0d0a1f;
+  --surface:    #1a1233;
+  --foreground: #ede8ff;
+  --muted:      #9b8ec4;
+  --brand:      #c4b5fd;
+  --brand-foreground: #1e0859;
+  --logo-filter: invert(1) brightness(0.85);
+}
 
-.theme-rose              { --brand: #e11d48; --brand-foreground: #ffffff; }
-.dark.theme-rose         { --brand: #fb7185; --brand-foreground: #000000; }
+/*  Esmeralda  */
+.theme-emerald {
+  --background: #041a0e;
+  --surface:    #082a18;
+  --foreground: #d1fae5;
+  --muted:      #6ee7b7;
+  --brand:      #34d399;
+  --brand-foreground: #022c22;
+  --logo-filter: invert(1) brightness(0.85);
+}
 
-.theme-violet            { --brand: #7c3aed; --brand-foreground: #ffffff; }
-.dark.theme-violet       { --brand: #a78bfa; --brand-foreground: #000000; }
+/*  Rosa  */
+.theme-rose {
+  --background: #1a0508;
+  --surface:    #2d0a12;
+  --foreground: #ffe4e6;
+  --muted:      #fda4af;
+  --brand:      #fb7185;
+  --brand-foreground: #4c0519;
+  --logo-filter: invert(1) brightness(0.85);
+}
 
-.theme-emerald           { --brand: #059669; --brand-foreground: #ffffff; }
-.dark.theme-emerald      { --brand: #34d399; --brand-foreground: #000000; }
+/*  Ámbar (claro cálido)  */
+/* NO usa .dark  es un tema claro de tonos cálidos */
+.theme-amber {
+  --background: #fffbeb;
+  --surface:    #fef3c7;
+  --foreground: #451a03;
+  --muted:      #92400e;
+  --brand:      #d97706;
+  --brand-foreground: #ffffff;
+  --logo-filter: invert(0) brightness(0.15);
+}
 
-.theme-amber             { --brand: #d97706; --brand-foreground: #ffffff; }
-.dark.theme-amber        { --brand: #fbbf24; --brand-foreground: #000000; }
+/*  Medianoche  */
+.theme-midnight {
+  --background: #060b18;
+  --surface:    #0e1628;
+  --foreground: #e0e7ff;
+  --muted:      #818cf8;
+  --brand:      #6366f1;
+  --brand-foreground: #eef2ff;
+  --logo-filter: invert(1) brightness(0.9);
+}

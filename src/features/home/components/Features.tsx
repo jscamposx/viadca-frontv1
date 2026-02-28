@@ -91,14 +91,14 @@ const Features = () => {
             </h2>
           </header>
 
-          <div className="mt-16 border-t border-gray-200 dark:border-white/20" role="separator" />
+          <div className="mt-16 border-t border-foreground/10" role="separator" />
 
           <div className="flex flex-col">
             {FEATURES_DATA.map((feature, index) => (
               <article key={feature.id} className="feature-card group">
                 <div
                   className={`grid grid-cols-1 md:grid-cols-12 items-start gap-y-8 md:gap-x-20 py-14 ${
-                    index !== 0 ? "border-t border-gray-100 dark:border-white/5" : ""
+                    index !== 0 ? "border-t border-foreground/5" : ""
                   }`}
                 >
                   <div className="col-span-1 md:col-span-5 w-full">

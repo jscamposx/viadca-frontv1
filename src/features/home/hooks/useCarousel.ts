@@ -29,9 +29,8 @@ export const useCarousel = () => {
           stagger: 0.12,
           scrollTrigger: {
             trigger: containerRef.current,
-            start: "top 60%",
-            end: "bottom 40%",
-            toggleActions: "play reverse play reverse",
+            start: "top 75%",
+            toggleActions: "play none none none",
           },
         }
       );

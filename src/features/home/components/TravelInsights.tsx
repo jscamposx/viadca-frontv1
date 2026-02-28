@@ -27,7 +27,7 @@ const TravelInsights = () => {
               return (
                 <div 
                   key={item.id} 
-                  className="border-t border-gray-200 dark:border-white/10 first:border-t-0 md:first:border-t"
+                  className="border-t border-foreground/10 first:border-t-0 md:first:border-t"
                 >
                   <button
                     onClick={() => setActiveId(item.id)}
@@ -70,7 +70,7 @@ const TravelInsights = () => {
                       </p>
 
                       <figure className="block lg:hidden w-full m-0">
-                          <div className="bg-gray-100 dark:bg-white/5 rounded-2xl flex items-center justify-center">
+                          <div className="bg-surface rounded-2xl flex items-center justify-center">
                             <img 
                               src={item.image} 
                               alt={item.title} 
@@ -88,7 +88,7 @@ const TravelInsights = () => {
 
           <figure className="hidden lg:block lg:col-span-7 sticky top-12 m-0">
             <div 
-              className="bg-gray-100 dark:bg-white/5 rounded-4xl w-full max-w-216 relative overflow-hidden flex items-center justify-center p-12 mx-auto lg:mx-0 transition-colors duration-300"
+              className="bg-surface rounded-4xl w-full max-w-216 relative overflow-hidden flex items-center justify-center p-12 mx-auto lg:mx-0 transition-colors duration-300"
               style={{ aspectRatio: '864 / 692' }}
             >
                {TRAVEL_INSIGHTS_DATA.map((item) => (
