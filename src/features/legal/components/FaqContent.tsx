@@ -3,7 +3,29 @@ import { FAQ_HERO, FAQ_CATEGORIES } from "../data/faq.data";
 import SupportCTA from "./SupportCTA";
 
 const FaqContent = () => (
-  <main className="lg:col-span-9 space-y-20">
+  <div className="min-h-screen bg-background font-sans transition-colors duration-300 selection:bg-brand/10 selection:text-brand">
+    <div className="fixed inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_top,var(--tw-gradient-stops))] from-brand/5 via-transparent to-transparent z-0" />
+    <div className="relative z-10 max-w-315 mx-auto px-6 pt-32 pb-24">
+      <div className="grid lg:grid-cols-12 gap-12 items-start">
+        <aside className="hidden lg:block lg:col-span-3 sticky top-32">
+          <nav aria-label="Navegación de categorías" className="space-y-6">
+            <h2 className="text-xs font-bold tracking-widest text-muted uppercase ml-3">Categorías</h2>
+            <ul className="space-y-1">
+              {FAQ_CATEGORIES.map((item) => (
+                <li key={item.id}>
+                  <a
+                    href={`#${item.id}`}
+                    className="group flex items-center justify-between px-4 py-3 rounded-xl text-sm font-medium text-muted transition-all duration-200 hover:bg-surface hover:text-foreground hover:shadow-sm"
+                  >
+                    {item.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </aside>
+
+        <main className="lg:col-span-9 space-y-20">
     <header className="space-y-6 max-w-3xl">
       <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface border border-muted/20 text-brand text-xs font-bold uppercase tracking-wider backdrop-blur-sm shadow-sm">
         <HelpCircle className="w-3.5 h-3.5" />
@@ -50,9 +72,12 @@ const FaqContent = () => (
     </div>
 
     <div className="pt-12 border-t border-muted/10">
-      <SupportCTA />
+          <SupportCTA />
+        </div>
+      </main>
+      </div>
     </div>
-  </main>
+  </div>
 );
 
 export default FaqContent;

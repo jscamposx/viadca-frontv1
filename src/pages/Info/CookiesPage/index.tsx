@@ -1,11 +1,5 @@
-﻿import CookiesHero from "@/features/legal/components/CookiesHero";
-import CookiesContent from "@/features/legal/components/CookiesContent";
+﻿import CookiesContent from "@/features/legal/components/CookiesContent";
 
-const Cookies = () => (
-  <div className="flex flex-col min-h-screen bg-background font-sans transition-colors duration-300">
-    <CookiesHero />
-    <CookiesContent />
-  </div>
-);
+const Cookies = () => <CookiesContent />;
 
 export default Cookies;
