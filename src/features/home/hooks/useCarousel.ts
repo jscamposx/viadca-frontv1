@@ -1,8 +1,5 @@
-import { useRef, useEffect, useState, useLayoutEffect } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
+import { useRef, useEffect, useState } from "react";
+import { loadGsap } from "@/shared/lib/gsap";
 
 export const useCarousel = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -12,33 +9,37 @@ export const useCarousel = () => {
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
 
-  useLayoutEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        cardsRef.current,
-        {
-          y: 100,
-          opacity: 0,
-          immediateRender: false,
-        },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 1,
-          ease: "power3.out",
-          stagger: 0.12,
-          scrollTrigger: {
-            trigger: containerRef.current,
-            start: "top 75%",
-            toggleActions: "play none none none",
-          },
-        }
-      );
-    }, containerRef);
+  useEffect(() => {
+    let ctx: { revert: () => void } | undefined;
 
-    return () => {
-      ctx.revert();
+    const init = async () => {
+      const { gsap } = await loadGsap();
+      ctx = gsap.context(() => {
+        gsap.fromTo(
+          cardsRef.current,
+          {
+            y: 100,
+            opacity: 0,
+            immediateRender: false,
+          },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 1,
+            ease: "power3.out",
+            stagger: 0.12,
+            scrollTrigger: {
+              trigger: containerRef.current,
+              start: "top 75%",
+              toggleActions: "play none none none",
+            },
+          }
+        );
+      }, containerRef);
     };
+
+    init();
+    return () => ctx?.revert();
   }, []);
 
   const checkScroll = () => {

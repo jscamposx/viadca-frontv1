@@ -1,12 +1,8 @@
 
-import { useRef, useState } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
+import { useRef, useState, useEffect } from "react";
+import { loadGsap } from "@/shared/lib/gsap";
 import { REVIEWS_DATA } from "../data/reviews.data";
 import type { Review } from "../data/reviews.data";
-
-gsap.registerPlugin(ScrollTrigger);
 
 export const useReviews = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -14,9 +10,12 @@ export const useReviews = () => {
 
   const [reviews] = useState<Review[]>(REVIEWS_DATA);
 
-  useGSAP(
-    () => {
-      const ctx = gsap.context(() => {
+  useEffect(() => {
+    let ctx: { revert: () => void } | undefined;
+
+    const init = async () => {
+      const { gsap } = await loadGsap();
+      ctx = gsap.context(() => {
         gsap.from(".review-card", {
           y: 40,
           opacity: 0,
@@ -29,11 +28,11 @@ export const useReviews = () => {
           },
         });
       }, containerRef);
+    };
 
-      return () => ctx.revert();
-    },
-    { scope: containerRef }
-  );
+    init();
+    return () => ctx?.revert();
+  }, []);
 
 
   const scroll = (direction: "left" | "right") => {

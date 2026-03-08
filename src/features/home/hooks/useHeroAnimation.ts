@@ -1,9 +1,5 @@
-import { useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
-
-gsap.registerPlugin(ScrollTrigger);
+import { useRef, useEffect } from "react";
+import { loadGsap } from "@/shared/lib/gsap";
 
 export const useHeroAnimation = (isMediaReady: boolean) => {
   const container = useRef<HTMLDivElement>(null);
@@ -14,13 +10,18 @@ export const useHeroAnimation = (isMediaReady: boolean) => {
   const leftContent = useRef<HTMLDivElement>(null);
   const leftContentInner = useRef<HTMLDivElement>(null);
 
-  useGSAP(
-    () => {
-      if (!isMediaReady) {
-        return;
-      }
+  useEffect(() => {
+    if (!isMediaReady) return;
 
-      const mm = gsap.matchMedia();
+    let raf1 = 0;
+    let raf2 = 0;
+    let ctx: { revert: () => void } | undefined;
+
+    const init = async () => {
+      const { gsap, ScrollTrigger } = await loadGsap();
+
+      ctx = gsap.context(() => {
+        const mm = gsap.matchMedia();
 
       mm.add("(min-width: 1024px)", () => {
         gsap.set(leftContent.current, {
@@ -181,26 +182,22 @@ export const useHeroAnimation = (isMediaReady: boolean) => {
         tl.to(overlay.current, { opacity: 0, duration: 1 }, "mobileSplit+=1");
       });
 
-      let raf1 = 0;
-      let raf2 = 0;
-      raf1 = requestAnimationFrame(() => {
-        raf2 = requestAnimationFrame(() => {
-          ScrollTrigger.refresh();
+        raf1 = requestAnimationFrame(() => {
+          raf2 = requestAnimationFrame(() => {
+            ScrollTrigger.refresh();
+          });
         });
-      });
+      }, container);
+    };
 
-      return () => {
-        if (raf1) {
-          cancelAnimationFrame(raf1);
-        }
-        if (raf2) {
-          cancelAnimationFrame(raf2);
-        }
-        mm.revert();
-      };
-    },
-    { scope: container, dependencies: [isMediaReady] }
-  );
+    init();
+
+    return () => {
+      if (raf1) cancelAnimationFrame(raf1);
+      if (raf2) cancelAnimationFrame(raf2);
+      ctx?.revert();
+    };
+  }, [isMediaReady]);
 
   return {
     container,

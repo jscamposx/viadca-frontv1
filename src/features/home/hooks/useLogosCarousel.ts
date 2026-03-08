@@ -1,11 +1,7 @@
 import { useEffect, useRef, useState, useMemo } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
+import { loadGsap } from "@/shared/lib/gsap";
 import { LOGOS_DATA } from "../data/logos.data";
 import type { LogoItem } from "../data/logos.data";
-
-gsap.registerPlugin(ScrollTrigger);
 
 export const useLogosCarousel = (logosProp?: LogoItem[]) => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -13,7 +9,8 @@ export const useLogosCarousel = (logosProp?: LogoItem[]) => {
   const firstSeqRef = useRef<HTMLUListElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
 
-  const marqueeTween = useRef<gsap.core.Tween | null>(null);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const marqueeTween = useRef<any>(null);
   const [seqWidth, setSeqWidth] = useState(0);
 
   const base = useMemo(
@@ -23,23 +20,33 @@ export const useLogosCarousel = (logosProp?: LogoItem[]) => {
 
   const sequences = useMemo(() => [base, base, base], [base]);
 
-  useGSAP(() => {
-    gsap.fromTo(
-      containerRef.current,
-      { y: 40, opacity: 0, scale: 0.98 },
-      {
-        y: 0,
-        opacity: 1,
-        scale: 1,
-        duration: 1.2,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 85%",
-        },
-      }
-    );
-  }, { scope: sectionRef });
+  useEffect(() => {
+    let ctx: { revert: () => void } | undefined;
+
+    const init = async () => {
+      const { gsap } = await loadGsap();
+      ctx = gsap.context(() => {
+        gsap.fromTo(
+          containerRef.current,
+          { y: 40, opacity: 0, scale: 0.98 },
+          {
+            y: 0,
+            opacity: 1,
+            scale: 1,
+            duration: 1.2,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: sectionRef.current,
+              start: "top 85%",
+            },
+          }
+        );
+      }, sectionRef);
+    };
+
+    init();
+    return () => ctx?.revert();
+  }, []);
 
 
   useEffect(() => {
@@ -70,22 +77,30 @@ export const useLogosCarousel = (logosProp?: LogoItem[]) => {
   useEffect(() => {
     if (!trackRef.current || seqWidth <= 0) return;
 
-    const isMobile = window.innerWidth < 768;
-    const isTablet = window.innerWidth >= 768 && window.innerWidth < 1024;
-    const speed = isMobile ? 100 : isTablet ? 80 : 50; 
-    const duration = seqWidth / speed;
+    let tween: any = null;
 
-    if (marqueeTween.current) marqueeTween.current.kill();
+    const init = async () => {
+      const { gsap } = await loadGsap();
+      if (marqueeTween.current) marqueeTween.current.kill();
 
-   
-    marqueeTween.current = gsap.to(trackRef.current, {
-      x: -seqWidth,
-      duration: duration,
-      ease: "none", 
-      repeat: -1, 
-    });
+      const isMobile = window.innerWidth < 768;
+      const isTablet = window.innerWidth >= 768 && window.innerWidth < 1024;
+      const speed = isMobile ? 100 : isTablet ? 80 : 50;
+      const duration = seqWidth / speed;
+
+      tween = gsap.to(trackRef.current, {
+        x: -seqWidth,
+        duration,
+        ease: "none",
+        repeat: -1,
+      });
+      marqueeTween.current = tween;
+    };
+
+    init();
 
     return () => {
+      if (tween) tween.kill();
       if (marqueeTween.current) marqueeTween.current.kill();
     };
   }, [seqWidth]);
