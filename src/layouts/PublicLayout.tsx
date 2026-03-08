@@ -5,7 +5,7 @@ import Footer from '@/shared/ui/Footer';
 export const PublicLayout = () => (
   <div className="flex min-h-screen flex-col bg-background text-foreground antialiased selection:bg-brand selection:text-brand-foreground">
     <ThemeToggle />
-    <main className="flex-1">
+    <main className="flex-1 min-h-screen">
       <Outlet />
     </main>
     <Footer />
