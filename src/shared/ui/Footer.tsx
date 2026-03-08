@@ -240,15 +240,7 @@ const Footer = () => {
             <div className="relative group">
               <div className="absolute inset-0 bg-brand/20 rounded-2xl blur opacity-25 group-hover:opacity-40 transition-opacity duration-300" aria-hidden="true" />
               <div className="relative bg-surface rounded-2xl overflow-hidden shadow-sm border border-surface">
-                <div className="aspect-video w-full bg-surface flex items-center justify-center">
-                  <iframe
-                    title="Mapa de ubicación"
-                    src="https://maps.google.com/maps?q=Durango,Mexico&t=&z=13&ie=UTF8&iwloc=&output=embed"
-                    loading="lazy"
-                    className="w-full h-full border-0 grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
-                    allowFullScreen
-                  />
-                </div>
+                <div className="aspect-video w-full bg-surface" />
               </div>
             </div>
             <div className="p-4 bg-surface rounded-xl border border-surface">
